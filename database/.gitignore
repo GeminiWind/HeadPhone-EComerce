@@ -1,1 +1,12 @@
-*.sqlite
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+.env
+/composer.lock
+/.phpintel
