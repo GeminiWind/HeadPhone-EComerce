@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,8 +9,9 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-
-
+Route::name('index')->get('/', function () {
+    return view('customers.home');
+});
 Route::group(['prefix' => 'my'], function () {
     Route::name('change-password')->get('change-password', function () {
         return view('customers.change_password');
@@ -26,9 +26,7 @@ Route::group(['prefix' => 'my'], function () {
 Route::get('search', function () {
     return view('customers.search');
 });
-
 Route::group(['namespace' => 'Customer'], function(){
     Auth::routes();
 });
-
 Route::get('/home', 'HomeController@index');
