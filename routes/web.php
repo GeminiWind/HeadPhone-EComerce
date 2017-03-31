@@ -12,24 +12,24 @@
 */
 
 Route::get('/', function () {
-	return view('welcome');
+    return view('welcome');
 });
 
 Route::get('trangchu', function () {
-	return view('customers.home');
+    return view('customers.home');
 });
-Route::get('change-password',function(){
-	return view('customers.change_password');
+Route::get('change-password', function () {
+    return view('customers.change_password');
 });
-Route::get('infor',function(){
-	return view('customers.change_infor');
-});
-
-Route::get('search',function(){
-	return view('customers.search');
+Route::get('infor', function () {
+    return view('customers.change_infor');
 });
 
+Route::get('search', function () {
+    return view('customers.search');
+});
 
-Route::get('test',function(){
-	return view('profile');
+
+Route::get('test', function () {
+    return view('profile');
 });
