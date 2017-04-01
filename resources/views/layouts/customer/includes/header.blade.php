@@ -11,7 +11,13 @@
 			<div class="pull-right auto-width-right">
 				<ul class="top-details menu-beta l-inline">
 					
-
+					{{-- @if(Auth::check())
+						<li><a href="">Chào bạn {{Auth::user()->full_name}}</a></li>
+						<li><a href="{{route('logout')}}">Đăng xuất</a></li>
+					@else --}}
+						<li><a href="{{-- {{route('signin')}} --}}">Đăng kí</a></li>
+						<li><a href="{{-- {{route('login')}} --}}">Đăng nhập</a></li>
+					{{-- @endif --}}
 				</ul>
 			</div>
 			<div class="clearfix"></div>
