@@ -15,7 +15,7 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::get('trangchu', function () {
+Route::get('trang-chu', function () {
     return view('customers.home');
 });
 Route::get('change-password', function () {
@@ -32,21 +32,12 @@ Route::get('search', function () {
 Route::get('test', function () {
     return view('profile');
 });
-
-Route::get('trangchu', function () {
-    return view('customers.home');
+Route::get('dang-nhap',function(){
+	return view('customers.login_customer');
 });
-Route::get('change-password', function () {
-    return view('customers.change_password');
+Route::get('dang-ky',function(){
+	return view('customers.signup_customer');
 });
-Route::get('infor', function () {
-    return view('customers.change_infor');
-});
-
-Route::get('search', function () {
-    return view('customers.search');
-});
-
-Route::get('test', function () {
-    return view('profile');
+Route::get('product-detail', function(){
+	return view('customers.product_detail');
 });
