@@ -105,3 +105,4 @@ Route::get('delete/product/{id}','ProductController@deleteProduct');
 
 
 Route::post('edit/product/{id}','ProductController@editProduct');
+Route::post('edit/product/{id}','ProductController@editProduct');
