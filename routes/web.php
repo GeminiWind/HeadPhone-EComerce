@@ -19,9 +19,7 @@ Route::group(['prefix' => 'my'], function () {
     Route::name('change-info')->get('change-info', function () {
         return view('customers.change_infor');
     });
-    Route::get('info', function () {
-        return view('customers.profile');
-    });
+
 });
 Route::get('search', function () {
     return view('customers.search');
@@ -30,3 +28,17 @@ Route::group(['namespace' => 'Customer'], function(){
     Auth::routes();
 });
 Route::get('/home', 'HomeController@index');
+
+Route::get('infor', function () {
+    return view('customers.change_infor');
+});
+
+Route::get('search', function () {
+    return view('customers.search');
+});
+
+ //rout vao admin
+Route::group(['prefix' => 'cate'], function(){
+    Route::get('add', ['as' =>'admin.category.store', 'uses'=> 'CateController@getAddCate']);
+    Route::post('add', ['as' =>'admin.cate-post', 'uses' =>'CateController@postAddCate']);
+});
