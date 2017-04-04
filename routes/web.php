@@ -61,3 +61,9 @@ Route::group(['namespace' => 'Customer'], function () {
 });
 
 Route::get('/home', 'HomeController@index');
+
+Route::post('product','ProductController@addProduct');
+Route::get('delete/product/{id}','ProductController@deleteProduct');
+
+
+Route::post('edit/product/{id}','ProductController@editProduct');
