@@ -140,6 +140,7 @@
                                  <div class="modal-body">
                                     <form role="form" action="{{route('admin.category.update', $category->slug)}}" method="POST">
                                        {!! csrf_field() !!}
+                                       {{-- de su dung form voi method put, patch can them dong nay --}}
                                        <input name="_method" type="hidden" value="PUT">
                                        <div class="box-body">
                                           <div class="form-group">
