@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->nullable();
             $table->integer('price')->default(0);
             $table->text('description');
-            $table->string('image');
+            $table->json('image');
             $table->tinyInteger('is_hot')->default(0);
             $table->tinyInteger('is_new')->default(0);
             $table->tinyInteger('is_available')->default(0);

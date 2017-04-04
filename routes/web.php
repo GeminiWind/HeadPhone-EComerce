@@ -28,3 +28,8 @@ Route::group(['prefix' => 'my'], function () {
 Route::get('search', function () {
     return view('customers.search');
 });
+Route::group(['namespace' => 'Customer'], function(){
+    Auth::routes();
+});
+
+Route::get('/home', 'HomeController@index');
