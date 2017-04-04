@@ -96,4 +96,8 @@ Route::resource('products','ProductController');
 
 Route::post('edit/product/{id}','ProductController@editProduct');
 
+Route::post('product','ProductController@addProduct');
+Route::get('delete/product/{id}','ProductController@deleteProduct');
+
+
 Route::post('edit/product/{id}','ProductController@editProduct');
