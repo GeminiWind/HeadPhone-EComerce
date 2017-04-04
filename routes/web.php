@@ -81,3 +81,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('logout', 'Auth\LogOutController@logout')->name('admin.logout');
     Route::get('/', 'AdminController@index');
 });
+Route::post('product','ProductController@addProduct');
+Route::get('delete/product/{id}','ProductController@deleteProduct');
+
+
+Route::post('edit/product/{id}','ProductController@editProduct');
+
