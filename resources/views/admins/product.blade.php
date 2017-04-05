@@ -42,7 +42,7 @@
                   </i>
                   Add new prdouct
                   </button>
-               @include('admin._partials.modal.create_product')
+               @include('admins._partials.modal.create_product')
                </h3>
             </div>
             <!-- /.box-header -->
@@ -139,9 +139,8 @@
                            <i class="fa fa-trash">
                            </i>
                            </button>
-                           @include('admin._partials.modal.create_alone_sale', ['product' => $product ])
-                          @include('admin._partials.modal.edit_product', ['product' => $product ])
-                          @include('admin._partials.modal.delete_product', ['product' => $product ])
+                          @include('admins._partials.modal.edit_product', ['product' => $product ])
+                          @include('admins._partials.modal.delete_product', ['product' => $product ])
                         </td>
                         <td>
                            {{$product->created_at->diffForHumans()}}
