@@ -87,6 +87,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 
 Route::resource('products','ProductController');
+Route::resource('/tests','ProductController');
 
 
 
