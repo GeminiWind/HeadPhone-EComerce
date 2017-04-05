@@ -28,11 +28,11 @@
                                 Category
                             </label>
                             <select name="category_id">
-                               
-                                <option value="2">
-                                   OLO
+                                @foreach ($all_categories as $category)
+                                <option value="{{ $category->id}}">
+                                    {{ $category->name }}
                                 </option>
-                            
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -54,6 +54,13 @@
                                 Price
                             </label>
                             <input class="form-control" id="price" name="price" placeholder="Enter Unit" type="number" value="{{ old('proce' )}}">
+                            </input>
+                        </div>
+                        <div class="form-group">
+                            <label for="guarantee_duration">
+                                Guaranee Duration
+                            </label>
+                            <input class="form-control" id="price" name="guarantee_duration" placeholder="Enter Unit" type="number" value="">
                             </input>
                         </div>
                         <div class="form-group">
@@ -84,6 +91,22 @@
                                 <label>
                                     <input id="" name="is_new" type="radio" value="1">
                                         New
+                                    </input>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input checked="" id="" name="is_available" type="radio" value="0">
+                                        Not Available
+                                    </input>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input id="" name="is_available" type="radio" value="1">
+                                        Available
                                     </input>
                                 </label>
                             </div>
