@@ -64,6 +64,9 @@ Route::get('search', function () {
 // Route::get('test', function () {
 //     return view('profile');
 // });
+Route::get('test', function () {
+    return view('profile');
+});
 
 
 Route::group(['namespace' => 'Customer'], function () {
