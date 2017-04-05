@@ -62,6 +62,14 @@ Route::group(['namespace' => 'Customer'], function () {
 
 Route::get('/home', 'HomeController@index');
 
+
+
+Route::resource('/tests','ProductController');
+
+
+
+
+
 Route::post('product','ProductController@addProduct');
 Route::get('delete/product/{id}','ProductController@deleteProduct');
 
