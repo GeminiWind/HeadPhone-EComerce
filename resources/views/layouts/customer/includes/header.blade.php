@@ -23,7 +23,19 @@
                 <ul class="top-details menu-beta l-inline">
                 </ul>
             </div>
-            <div class="clearfix">
+            <div class="pull-right auto-width-right">
+                    <ul class="top-details menu-beta l-inline">
+                    @if(Auth::check())
+                        <li><a href="">Chào bạn {{-- {{Auth::user()->full_name}} --}}</a></li>
+                        <li><a href="{{-- {{route('logout')}} --}}">Đăng xuất</a></li>
+                    @else
+                        <li><a href="{{-- {{route('signin')}} --}}">Đăng kí</a></li>
+                        <li><a href="{{-- {{route('login')}} --}}">Đăng nhập</a></li>
+                    @endif
+
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
         <!-- .container -->
@@ -65,48 +77,23 @@
         <!-- .container -->
     </div>
     <!-- .header-body -->
-    <div class="header-bottom" style="background-color: #0277b8;">
-        <div class="container">
-            <a class="visible-xs beta-menu-toggle pull-right" href="#">
-                <span class="beta-menu-toggle-text">
-                    Menu
-                </span>
-                <i class="fa fa-bars">
-                </i>
-            </a>
-            <div class="visible-xs clearfix">
-            </div>
-            <nav class="main-menu">
-                <ul class="l-inline ov">
-                    <li>
-                        <a href="">
-                            Trang chủ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Kiểu tai nghe
-                        </a>
-                        <ul class="sub-menu">
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">
-                            Giới thiệu
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Liên hệ
-                        </a>
-                    </li>
-                </ul>
-                <div class="clearfix">
-                </div>
-            </nav>
-        </div>
-        <!-- .container -->
-    </div>
-    <!-- .header-bottom -->
-</div>
-<!-- #header -->
+	<div class="header-bottom" style="background-color: #0277b8;">
+		<div class="container">
+			<a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
+			<div class="visible-xs clearfix"></div>
+			<nav class="main-menu">
+				<ul class="l-inline ov">
+					<li><a href="">Trang chủ</a></li>
+					<li><a href="#">Kiểu tai nghe</a>
+						<ul class="sub-menu">
+
+						</ul>
+					</li>
+					<li><a href="">Giới thiệu</a></li>
+					<li><a href="">Liên hệ</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</nav>
+		</div> <!-- .container -->
+	</div> <!-- .header-bottom -->
+	</div> <!-- #header -->

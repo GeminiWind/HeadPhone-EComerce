@@ -1,4 +1,4 @@
-@extends('layouts/customer/master')
+@extends('layouts.customer.master')
 @section('content')
 <div class="fullwidthbanner-container">
     <div class="fullwidthbanner">
@@ -7,7 +7,7 @@
                 <ul>
                     {{-- @foreach($slide as $sl) --}}
 						{{--
-                    <!--- THE FIRST SLIDE -->
+                    <!- THE FIRST SLIDE ->
                     --}}
                     <li class="active-revslide" data-slotamount="20" data-transition="boxfade" style="width: 100%; height: 100%; overflow: hidden; z-index: 18; visibility: hidden; opacity: 0;">
                         <div class="slotholder" data-bgfit="undefined" data-bgfitend="undefined" data-bgposition="undefined" data-bgpositionend="undefined" data-duration="undefined" data-ease="undefined" data-easeme="undefined" data-kenburns="undefined" data-oheight="undefined" data-owidth="undefined" data-rotationend="undefined" data-rotationstart="undefined" data-zoomend="undefined" data-zoomstart="undefined" style="width:100%;height:100%;">

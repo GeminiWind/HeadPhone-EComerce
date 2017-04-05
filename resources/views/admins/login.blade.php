@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
 @endpush
 
-@include('layout.admin.includes.head')
+@include('layouts.admin.includes.head')
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
@@ -43,7 +43,7 @@
   </div>
   <!-- /.login-box-body -->
 </div>
-@include('admin.layout.includes.script')
+@include('layouts.admin.includes.script')
 @section('after-script')
 	<script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
 <script>

@@ -102,17 +102,14 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-sm-3">
                 <div class="widget">
                     <h4 class="widget-title">
-                        Hệ thống cửa hàng
+                        Cửa hàng
                     </h4>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div>
+                <div>
     <div class="contact-info">
         <i class="fa fa-map-marker">
         </i>
@@ -124,6 +121,11 @@
         </p>
     </div>
 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- .row -->
 <!-- .container -->
 <!-- #footer -->

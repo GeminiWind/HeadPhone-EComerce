@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ asset('plugns/sweetalert2/sweetalert2.min.css') }}">
 @endpush
 @push('js-head')
-    <script src="{{ asset('plugns/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('plugns/sweetalert2/sweetalert2.min.js') }}"></script>
 @endpush
 @extends('layouts.admin.master')
 @section('content')
@@ -11,15 +11,22 @@
    <div style="padding: 0px; background: white; z-index: 999999; font-size: 16px; font-weight: 600;">
    </div>
    <section class="content">
+    <div class="col-lg-12">
+                        @if (Session::has('flash_message'))  <!-- neu ton tai session flash_message thi thuc hien -->
+                        <div class="alert alert-success">
+                            {!! Session::get('flash_message') !!}
+                        </div>
+                        @endif
+                    </div>
       <div class="row">
          <div class="col-xs-12">
             <div class="box-header">
                <h3 class="box-title">
                   Category Management
                   <button class="btn btn-primary pull-primary" data-target="#addNewCategory" data-toggle="modal" style="margin-right: 5px;" type="button">
-                  <i class="fa fa-plus">
-                  </i>
-                  Add new category
+                     <i class="fa fa-plus">
+                     </i>
+                     Add new category
                   </button>
                   <!-- Modal New -->
                   <div aria-labelledby="myModalLabel" class="modal fade" id="addNewCategory" role="dialog" tabindex="-1">
@@ -27,14 +34,15 @@
                         <div class="modal-content">
                            <div class="modal-header">
                               <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                              <span aria-hidden="true">
-                              ×
-                              </span>
+                                 <span aria-hidden="true">
+                                    ×
+                                 </span>
                               </button>
                               <h4 class="modal-title" id="myModalLabel">
-                                 Edit
+                                  Add Category
                               </h4>
                            </div>
+                           
                            <div class="modal-body">
                               <form role="form" action="{{route('admin.category.store')}}" method="POST">
                                  {!! csrf_field() !!}
@@ -42,7 +50,11 @@
                                     <div class="form-group">
                                        <label for="name">Category Name</label>
                                        <input type="text" class="form-control" id="name" name="name"
-                                          placeholder="Nhập tên thể loại" value="{{ old('name' )}}">
+                                       placeholder="Nhập tên thể loại" value="{{ old('name' )}}">
+                                    </div>
+                                    <div class="form-group">
+                                       <label for="name">Desciption</label>
+                                       <textarea name="description" class="form-control" placeholder="Nhập mô tả" value="{{ old('description' )}}"></textarea>
                                     </div>
                                     <div class="box-footer">
                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
@@ -52,14 +64,21 @@
                            </div>
                            <div class="modal-footer">
                               <button class="btn btn-default" data-dismiss="modal" type="button">
-                              Close
+                                 Close
                               </button>
                            </div>
                         </div>
                      </div>
+                     
                   </div>
                </h3>
+
             </div>
+            <div>   
+               {{-- validate category --}}
+               @include('admins.blog_errors.error')
+            </div>
+
             <!-- /.box-header -->
             <div class="box-body">
                <table aria-describedby="example1_info" class="table table-bordered table-striped dataTable" id="example1" role="grid">
@@ -72,7 +91,7 @@
                            Name
                         </th>
                         <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
-                           Tool
+                           Description
                         </th>
                         <th aria-controls="example1" aria-label="Engine version: activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 115px;" tabindex="0">
                            Created At
@@ -84,7 +103,7 @@
                   </thead>
                   <tbody>
                      @php($i=0)
-                     @foreach($categories as $category)
+                     {{-- @foreach($categories as $category)
                      <tr class="{{($i%2==0)? 'odd': 'even'}}" role="row">
                         <td class="sorting_1">
                            {{++$i}}
@@ -121,6 +140,7 @@
                                  <div class="modal-body">
                                     <form role="form" action="{{route('admin.category.update', $category->slug)}}" method="POST">
                                        {!! csrf_field() !!}
+                                       {{-- de su dung form voi method put, patch can them dong nay --}}
                                        <input name="_method" type="hidden" value="PUT">
                                        <div class="box-body">
                                           <div class="form-group">
@@ -177,26 +197,26 @@
                            {{$category->updated_at->diffForHumans()}}
                         </td>
                      </tr>
-                     @endforeach
-                  <tfoot>
-                     <tr>
-                        <th colspan="1" rowspan="1">
-                           No
-                        </th>
-                        <th colspan="1" rowspan="1">
-                           Name
-                        </th>
-                        <th colspan="1" rowspan="1">
-                           Tool
-                        </th>
-                        <th colspan="1" rowspan="1">
-                           Create At
-                        </th>
-                        <th colspan="1" rowspan="1">
-                           Last Updated
-                        </th>
-                     </tr>
-                  </tfoot>
+                     @endforeach --}}
+                     <tfoot>
+                        <tr>
+                           <th colspan="1" rowspan="1">
+                              No
+                           </th>
+                           <th colspan="1" rowspan="1">
+                              Name
+                           </th>
+                           <th colspan="1" rowspan="1">
+                              Description
+                           </th>
+                           <th colspan="1" rowspan="1">
+                              Create At
+                           </th>
+                           <th colspan="1" rowspan="1">
+                              Last Updated
+                           </th>
+                        </tr>
+                     </tfoot>
                   </tbody>
                </table>
             </div>
@@ -210,11 +230,13 @@
 </script>
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}">
 </script>
+{{-- xu ly hien thong bao sau khi add thanh cong category --}}
+
 @endpush
 @push('script')
-   <script>
-    $(function () {
-        $("#example1").DataTable();
-    });
+<script>
+  $(function () {
+    $("#example1").DataTable();
+ });
 </script>
 @endpush
