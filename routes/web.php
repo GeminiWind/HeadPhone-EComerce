@@ -52,6 +52,8 @@ Route::get('search', function () {
     return view('customers.search');
 });
 
+
+
 Route::get('test', function () {
     return view('profile');
 });
