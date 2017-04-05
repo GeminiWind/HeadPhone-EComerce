@@ -68,7 +68,6 @@ Route::get('test', function () {
     return view('profile');
 });
 
-
 Route::group(['namespace' => 'Customer'], function () {
     Auth::routes();
     //Social Login
@@ -100,9 +99,8 @@ Route::resource('/tests','ProductController');
 
 Route::post('edit/product/{id}','ProductController@editProduct');
 
+Route::resource('/tests','ProductController');
 Route::post('product','ProductController@addProduct');
 Route::get('delete/product/{id}','ProductController@deleteProduct');
-
-
 Route::post('edit/product/{id}','ProductController@editProduct');
 Route::post('edit/product/{id}','ProductController@editProduct');

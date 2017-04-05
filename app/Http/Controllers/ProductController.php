@@ -97,6 +97,137 @@ class ProductController extends Controller
          *
          * @param  \App\Models\Product  $product
          * @return \Illuminate\Http\Response   [ //cac loi
+                   
+         */
+        public function edit(Product $product)
+        {
+            //
+            $product = Product::find($id);
+            // $this->validate($request,
+             $product->guarantee_duration = $request->guarantee_duration;
+            $product->category_id        = 1;
+
+            $product->save();
+        }
+
+        /**
+         * Update the specified resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @param  \App\Models\Product  $product
+         * @return \Illuminate\Http\Response
+         */
+        public function update(Request $request, Product $product)
+        {
+            //
+        }
+
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  \App\Models\Product  $product
+         * @return \Illuminate\Http\Response
+         */
+        public function destroy($id)
+        {
+            //
+            $product = Product::find($id);
+            $product->delete();
+            echo "Deleted";
+        }
+    }
+
+    
+        /**
+         * Display a listing of the resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function index()
+        {
+            //
+            $product = Product::all();
+            foreach ($product as $key) {
+                echo $key . "<br>";
+                # code...
+            }
+
+        }
+
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function create()
+        {
+            //
+        }
+
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @return \Illuminate\Http\Response
+         */
+        public function store(Request $request)
+        {
+            //
+            $this->validate($request,
+                [ //cac loi
+                    'name'  => 'required|unique:products|min:3|max:100',
+                    'price' => 'min:0',
+                ],
+                [ //cac thong bao
+                    'name.required' => 'Bạn chưa nhập tên',
+                    'name.unique'   => 'Tên đã tồn tại',
+                    'name.min'      => 'Tên tối thiểu 3 kí tự',
+                    'name.max'      => 'Tên tối đa 100 kí tự',
+                    'price.min'     => 'Giá không được âm',
+                ]);
+
+            //sau khi bat loi xong, tien hanh luu du lieu
+            $product       = new Product;
+            $product->name = $request->name;
+
+            $product->price              = $request->price;
+            $product->description        = $request->description;
+            $product->is_hot             = $request->is_hot;
+            $product->is_new             = $request->is_new;
+            $product->image              = $request->image;
+            $product->is_available       = $request->is_available;
+            $product->guarantee_duration = $request->guarantee_duration;
+            $product->category_id        = 1;
+
+            $product->save();
+            echo "Done";
+        }
+
+        /**
+         * Display the specified resource.
+         *
+         * @param  \App\Models\Product  $product
+         * @return \Illuminate\Http\Response
+         */
+        public function show($id)
+        {
+            //
+            $product = Product::find($id);
+            echo $product;
+        }
+
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  \App\Models\Product  $product
+         * @return \Illuminate\Http\Response
+         */
+        public function edit(Product $product)
+        {
+            //
+            $product = Product::find($id);
+            $this->validate($request,
+                [ //cac loi
                     'name'  => 'required|unique:products|min:3|max:100',
                     'price' => 'min:0',
                 ],
@@ -115,14 +246,7 @@ class ProductController extends Controller
             $product->is_new             = $request->is_new;
             $product->image              = $request->image;
             $product->is_available       = $request->is_available;
-            $produ
-         */
-        public function edit(Product $product)
-        {
-            //
-            $product = Product::find($id);
-            // $this->validate($request,
-             $product->guarantee_duration = $request->guarantee_duration;
+            $product->guarantee_duration = $request->guarantee_duration;
             $product->category_id        = 1;
 
             $product->save();
