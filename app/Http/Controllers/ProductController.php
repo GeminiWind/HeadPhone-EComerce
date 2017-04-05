@@ -18,10 +18,7 @@ class ProductController extends Controller
         {
             //
             $product = Product::all();
-            foreach ($product as $key) {
-                echo $key . "<br>";
-                # code...
-            }
+            
 
         }
 
