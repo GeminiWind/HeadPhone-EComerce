@@ -11,6 +11,9 @@ class ProductController extends Controller
 
     
         /**
+=======
+{  /**
+>>>>>>> DONE Add, Edit, Delete Product
          * Display a listing of the resource.
          *
          * @return \Illuminate\Http\Response
@@ -365,30 +368,7 @@ class ProductController extends Controller
          *
          * @param  \App\Models\Product  $product
          * @return \Illuminate\Http\Response   [ //cac loi
-                    'name'  => 'required|unique:products|min:3|max:100',
-                    'price' => 'min:0',
-                ],
-                [ //cac thong bao
-                    'name.required' => 'Bạn chưa nhập tên',
-                    'name.unique'   => 'Tên đã tồn tại',
-                    'name.min'      => 'Tên tối thiểu 3 kí tự',
-                    'name.max'      => 'Tên tối đa 100 kí tự',
-                    'price.min'     => 'Giá không được âm',
-                ]);
-            $product->name = $request->name;
-
-            $product->price              = $request->price;
-            $product->description        = $request->description;
-            $product->is_hot             = $request->is_hot;
-            $product->is_new             = $request->is_new;
-            $product->image              = $request->image;
-            $product->is_available       = $request->is_available;
-            $product->guarantee_duration = $request->guarantee_duration;
-            $product->category_id        = 1;
-
-            $product->save();
-        }
-
+                   
         /**
          * Update the specified resource in storage.
          *
