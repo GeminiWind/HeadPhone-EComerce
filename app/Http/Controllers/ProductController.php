@@ -212,7 +212,14 @@ class ProductController extends Controller
             $product->is_new             = $request->is_new;
             $product->image              = $request->image;
             $product->is_available       = $request->is_available;
-            $product->guarantee_duration = $request->guarantee_duration;
+            $produ
+         */
+        public function edit(Product $product)
+        {
+            //
+            $product = Product::find($id);
+            // $this->validate($request,
+             $product->guarantee_duration = $request->guarantee_duration;
             $product->category_id        = 1;
 
             $product->save();
@@ -405,14 +412,7 @@ class ProductController extends Controller
          * Show the form for editing the specified resource.
          *
          * @param  \App\Models\Product  $product
-         * @return \Illuminate\Http\Response
-         */
-        public function edit(Product $product)
-        {
-            //
-            $product = Product::find($id);
-            $this->validate($request,
-                [ //cac loi
+         * @return \Illuminate\Http\Response   [ //cac loi
                     'name'  => 'required|unique:products|min:3|max:100',
                     'price' => 'min:0',
                 ],
