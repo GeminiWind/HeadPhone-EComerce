@@ -119,9 +119,9 @@
                          <td>
                            {{ ($product->is_new) ? 'New' : 'No' }}
                         </td>
-                          <td>
+                          {{-- <td>
                            {{ $product->isAloneSaleNow() ? 'On Sale'.$product->getRateAloneSaleNow()->rate :'No Sale'   }}
-                        </td>
+                        </td> --}}
                          <td>
                            {{ str_limit($product->description, $limit = 100, $end = "...") }}
                         </td>
@@ -142,12 +142,12 @@
                           @include('admins._partials.modal.edit_product', ['product' => $product ])
                           @include('admins._partials.modal.delete_product', ['product' => $product ])
                         </td>
-                        <td>
+                        {{-- <td>
                            {{$product->created_at->diffForHumans()}}
                         </td>
                         <td>
                            {{$product->updated_at->diffForHumans()}}
-                        </td>
+                        </td> --}}
                      </tr>
                      @endforeach
                   <tfoot>

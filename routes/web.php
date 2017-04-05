@@ -11,7 +11,12 @@
 |
  */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::name('index')->get('/', function () {
+
     return view('customers.home');
 });
 Route::group(['prefix' => 'my'], function () {
@@ -28,8 +33,51 @@ Route::group(['prefix' => 'my'], function () {
 Route::get('search', function () {
     return view('customers.search');
 });
-Route::group(['namespace' => 'Customer'], function(){
+
+Route::get('test', function () {
+    return view('profile');
+});
+Route::get('home', function () {
+    return view('customers.home');
+});
+
+Route::get('change-password', function () {
+    return view('customers.change_password');
+});
+Route::get('infor', function () {
+    return view('customers.change_infor');
+});
+
+Route::get('search', function () {
+    return view('customers.search');
+});
+
+
+
+Route::get('test', function () {
+    return view('profile');
+});
+
+
+Route::group(['namespace' => 'Customer'], function () {
     Auth::routes();
 });
 
 Route::get('/home', 'HomeController@index');
+
+
+
+
+Route::resource('products','ProductController');
+Route::resource('/tests','ProductController');
+
+
+
+
+
+
+Route::post('product','ProductController@addProduct');
+Route::get('delete/product/{id}','ProductController@deleteProduct');
+
+
+Route::post('edit/product/{id}','ProductController@editProduct');
