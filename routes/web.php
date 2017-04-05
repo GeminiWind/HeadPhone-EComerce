@@ -54,9 +54,10 @@ Route::get('search', function () {
 
 
 
-// Route::get('test', function () {
-//     return view('profile');
-// });
+Route::get('test', function () {
+    return view('profile');
+});
+
 
 Route::group(['namespace' => 'Customer'], function () {
     Auth::routes();
@@ -66,10 +67,17 @@ Route::get('/home', 'HomeController@index');
 
 
 
+
 Route::resource('products','ProductController');
+Route::resource('/tests','ProductController');
 
 
 
 
 
 
+Route::post('product','ProductController@addProduct');
+Route::get('delete/product/{id}','ProductController@deleteProduct');
+
+
+Route::post('edit/product/{id}','ProductController@editProduct');
