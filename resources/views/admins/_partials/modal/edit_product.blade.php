@@ -13,7 +13,7 @@
                                     </h4>
                                  </div>
                                  <div class="modal-body">
-                                   <form role="form" action="{{route('admin.product.update',$product->slug)}}" method="POST" enctype="multipart/form-data">
+                                   <form role="form" action="{{ route('products.edit',['id' => $product->id]) }}" method="GET" enctype="multipart/form-data">
                                     <input name="_method" type="hidden" value="PUT">
                                  {!! csrf_field() !!}
                                  <div class="box-body">
@@ -26,7 +26,7 @@
                  <label for="category_id">Category</label>
                  <select name="category_id">
                  @foreach ($all_categories as $category)
-                    <option value="{{ $category->id}}" {{ ($product->category->id==$category->id) ? 'selected' : ''}}>{{$category->name}}</option>
+                    <option value="{{ $category->id}}">{{ $category->name }}</option>
                  @endforeach
                     
                  </select>

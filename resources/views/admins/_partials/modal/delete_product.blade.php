@@ -16,12 +16,18 @@
                 Are you sure to delete category {{ $product->name }}
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal" type="button">
+                
+                <form action="{{route('products.destroy',['id' => $product->id])}}" method="post" accept-charset="utf-8">
+                <button class="btn btn-default " data-dismiss="modal" type="button">
                     Close
                 </button>
-                <a class="btn btn-danger" href="{{route('admin.product.delete',['slug' => $product->slug])}}">
-                    Yes, I m sure
+                    <input type="hidden" name="_method" value="DELETE">
+                    {!! csrf_field() !!}
+                    <input type="submit" class="btn btn-danger" value="Ok">
+                    
                 </a>
+                </form>
+
             </div>
         </div>
     </div>
