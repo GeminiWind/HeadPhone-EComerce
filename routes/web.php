@@ -77,6 +77,7 @@ Route::group(['namespace' => 'Customer'], function () {
 
 Route::get('/home', 'HomeController@index');
 
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('login', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login');
