@@ -28,8 +28,15 @@ Route::group(['prefix' => 'my'], function () {
 Route::get('search', function () {
     return view('customers.search');
 });
-Route::group(['namespace' => 'Customer'], function(){
+Route::group(['namespace' => 'Customer'], function () {
     Auth::routes();
 });
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('login', 'Auth\LoginController@showLoginForm');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LogOutController@logout')->name('admin.logout');
+    Route::get('/', 'AdminController@index');
+});
