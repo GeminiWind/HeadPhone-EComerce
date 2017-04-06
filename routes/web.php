@@ -30,7 +30,10 @@ Route::get('search', function () {
 });
 Route::group(['namespace' => 'Customer'], function () {
     Auth::routes();
-});
+    //Social Login
+    Route::get('/redirect/{provider}', 'SocialAuthController@redirect');
+    Route::get('/callback/{provider}', 'SocialAuthController@callback');
+    });
 
 Route::get('/home', 'HomeController@index');
 
