@@ -39,6 +39,8 @@ Route::group(['namespace' => 'Customer'], function () {
     //Social Login
     Route::get('/redirect/{provider}', 'SocialAuthController@redirect');
     Route::get('/callback/{provider}', 'SocialAuthController@callback');
+    //Contact
+    Route::post('contact', 'ContactController@handle');
     });
 
 Route::get('/home', 'HomeController@index');
