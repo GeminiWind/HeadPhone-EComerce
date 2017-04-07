@@ -19,6 +19,12 @@ Route::name('index')->get('/', function () {
 
     return view('customers.home');
 });
+Route::name('about')->get('about', function(){
+    return view('customers.about');
+});
+Route::name('contact')->get('contact', function(){
+    return view('customers.contact');
+});
 Route::group(['prefix' => 'my'], function () {
     Route::name('change-password')->get('change-password', function () {
         return view('customers.change_password');
@@ -60,7 +66,12 @@ Route::get('test', function () {
 
 Route::group(['namespace' => 'Customer'], function () {
     Auth::routes();
-});
+    //Social Login
+    Route::get('/redirect/{provider}', 'SocialAuthController@redirect');
+    Route::get('/callback/{provider}', 'SocialAuthController@callback');
+    //Contact
+    Route::post('contact', 'ContactController@handle');
+    });
 
 Route::get('/home', 'HomeController@index');
 

@@ -141,16 +141,16 @@
         </p>
         <p class="pull-right pay-options">
             <a href="#">
-                <img alt="" src="customer/images/pay/master.jpg"/>
+                <img alt="" src="/customer/images/pay/master.jpg"/>
             </a>
             <a href="#">
-                <img alt="" src="customer/images/pay/pay.jpg"/>
+                <img alt="" src="/customer/images/pay/pay.jpg"/>
             </a>
             <a href="#">
-                <img alt="" src="customer/images/pay/visa.jpg"/>
+                <img alt="" src="/customer/images/pay/visa.jpg"/>
             </a>
             <a href="#">
-                <img alt="" src="customer/images/pay/paypal.jpg"/>
+                <img alt="" src="/customer/images/pay/paypal.jpg"/>
             </a>
         </p>
         <div class="clearfix">
