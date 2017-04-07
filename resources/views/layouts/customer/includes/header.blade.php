@@ -11,10 +11,15 @@
                     <ul class="top-details menu-beta l-inline">
                     @if(Auth::check())
                         <li><a href="">Chào bạn {{Auth::user()->name}}</a></li>
-                        <li><a href="#">Đăng xuất</a></li>
+                        <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            {!! csrf_field() !!}
+                            <button type="submit" class="btn btn-default" style="border-style: none">Đăng xuất</button>
+                        </form>
+                        </li>
                     @else
-                        <li><a href="#">Đăng kí</a></li>
-                        <li><a href="#">Đăng nhập</a></li>
+                        <li><a href="{{ route('register') }}">Đăng kí</a></li>
+                        <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                     @endif
 
                     </ul>

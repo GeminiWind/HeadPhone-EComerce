@@ -27,7 +27,8 @@
 					<div class="space20">&nbsp;</div>
 					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ani m id est laborum.</p>
 					<div class="space20">&nbsp;</div>
-					<form action=" {{ url('contact') }}" method="post" class="contact-form">	
+					<form action=" {{ url('contact') }}" method="post" class="contact-form">
+					{!! csrf_field() !!}	
 						<div class="form-block">
 							<input name="name" type="text" placeholder="Your Name (required)">
 						</div>
