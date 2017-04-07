@@ -15,6 +15,9 @@
             <div class="modal-body">
                 Are you sure to delete category {{ $product->name }}
             </div>
+
+
+            
             <div class="modal-footer">
                 
                 <form action="{{route('products.destroy',['id' => $product->id])}}" method="post" accept-charset="utf-8">
@@ -25,7 +28,7 @@
                     {!! csrf_field() !!}
                     <input type="submit" class="btn btn-danger" value="Ok">
                     
-                </a>
+                
                 </form>
 
             </div>

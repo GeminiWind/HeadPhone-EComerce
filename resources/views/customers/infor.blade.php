@@ -1,3 +1,4 @@
+<link href="{!! asset('css/admin/bootstrap/css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
 @extends('layouts/customer/master')
 @section('content')
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">

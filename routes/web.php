@@ -33,7 +33,7 @@ Route::group(['prefix' => 'my'], function () {
         return view('customers.change_infor');
     });
     Route::get('info', function () {
-        return view('customers.profile');
+        return view('customers.infor');
     });
 });
 Route::get('search', function () {
@@ -106,3 +106,6 @@ Route::post('edit/product/{id}','ProductController@editProduct');
 Route::post('edit/product/{id}','ProductController@editProduct');
 
 Route::resource('products','ProductController');
+
+
+Route::resource('cate','CateController');

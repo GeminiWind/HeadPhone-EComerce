@@ -717,12 +717,15 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+{  
     public function index()
     {
-        //
+        
         $products = Product::all();
+
         //dd($products);
-        return view('admins.product', compact('products'));
+        //echo $products;
+        return view('admins.product',compact('products'));
 
     }
 

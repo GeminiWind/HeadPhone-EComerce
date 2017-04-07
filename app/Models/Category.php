@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+
     protected $guarded = ['id'];
 
     use Sluggable;
@@ -33,4 +34,5 @@ class Category extends Model
      protected $table = 'categories';
     //
      protected $table = 'categories';
+
 }
