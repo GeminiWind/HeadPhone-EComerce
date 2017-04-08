@@ -10,7 +10,7 @@
                 <div class="pull-right auto-width-right">
                     <ul class="top-details menu-beta l-inline">
                     @if(Auth::check())
-                        <li><a href="">Chào bạn {{Auth::user()->name}}</a></li>
+                        <li><a href="{{ route('customer.info') }}">Chào bạn {{Auth::user()->name}}</a></li>
                         <li>
                         <form action="{{ route('logout') }}" method="POST">
                             {!! csrf_field() !!}
@@ -30,13 +30,14 @@
         <div class="header-body">
             <div class="container beta-relative">
                 <div class="pull-left">
-                    <a href="index.html" id="logo"><img src="customer/images/logo-htd.png" width="200px" alt=""></a>
+                    <a href="{{ route('index') }}" id="logo"><img src="{{ asset('customer/images/logo-htd.png') }}" width="200px" alt=""></a>
                 </div>
                 <div class="pull-right beta-components space-left ov">
                     <div class="space10">&nbsp;</div>
                     <div class="beta-comp">
-                        <form role="search" method="get" id="searchform" action="/">
-                            <input type="text" value="" name="s" id="s" placeholder="Nhập từ khóa..." />
+                        <form role="search" method="post" id="searchform" action="{{ route('search') }}">
+                            {!! csrf_field() !!}
+                            <input type="text" value="" name="key" id="s" placeholder="Nhập từ khóa..." />
                             <button class="fa fa-search" type="submit" id="searchsubmit"></button>
                         </form>
                     </div>
@@ -44,33 +45,28 @@
                     <div class="beta-comp">
                     
                         <div class="cart">
-                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (@if(Session::has('cart')){{Session('cart')->totalQty}}@else Trống @endif) <i class="fa fa-chevron-down"></i></div>
-                            <div class="beta-dropdown cart-body">
-                            
-                            @if(Session::has('cart'))
-                            @foreach($product_cart as $product)
+                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (@if(Cart::count()>0){{Cart::count()}}@else Trống @endif) <i class="fa fa-chevron-down"></i></div>                            <div class="beta-dropdown cart-body">
+                            @foreach(Cart::content() as $item)
                                 <div class="cart-item">
-                                    <a class="cart-item-delete" href="{{route('xoagiohang',$product['item']['id'])}}"><i class="fa fa-times"></i></a>
+                                    <a class="cart-item-delete" href="{{ route('cart.remove',$item->rowId) }}"><i class="fa fa-times"></i></a>
                                     <div class="media">
-                                        <a class="pull-left" href="#"><img src="source/image/product/{{$product['item']['image']}}" alt=""></a>
+                                        <a class="pull-left" href="#"><img src="{{ Config::get('headphone.products', '/images/products/')}}{{ $item->options->main_image}}" alt=""></a>
                                         <div class="media-body">
-                                            <span class="cart-item-title">{{$product['item']['name']}}</span>
-                                            <span class="cart-item-amount">{{$product['qty']}}*<span>@if($product['item']['promotion_price']==0){{number_format($product['item']['unit_price'])}} @else {{number_format($product['item']['promotion_price'])}}@endif</span></span>
+                                            <span class="cart-item-title">{{ $item->name }}</span>
+                                            <span class="cart-item-amount">thnah tien</span></span>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                                 <div class="cart-caption">
-                                    <div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">@if(Session::has('cart')){{number_format($totalPrice)}} @else 0 @endif đồng</span></div>
+                                    <div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">@if(Cart::count()>0){{Cart::subtotal(0,'','.')}} @else 0 @endif đồng</span></div>
                                     <div class="clearfix"></div>
 
                                     <div class="center">
                                         <div class="space10">&nbsp;</div>
-                                        <a href="{{route('dathang')}}" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
+                                        <a href="{{ route('cart.index') }}" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
                                     </div>
                                 </div>
-
-                            @endif
                             </div>
                         </div> <!-- .cart -->
                     </div>
@@ -87,7 +83,9 @@
                         <li><a href="{{route('index')}}">Trang chủ</a></li>
                         <li><a href="#">Loại sản phẩm</a>
                             <ul class="sub-menu">
-                                
+                                @foreach ($categoryList as $category)
+                                    <li><a href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li><a href="{{route('about')}}">Giới thiệu</a></li>

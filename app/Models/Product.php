@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\AvailableScope;
 
 class Product extends Model
 {
@@ -31,6 +32,23 @@ class Product extends Model
         ];
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new AvailableScope);
+    }
+
+    public function scopeHot($query)
+    {
+        return $query->where('is_hot', 1);
+    }
+
+    public function scopeLatest($query)
+    {
+        return $query->where('is_new', 1);
+    }
+
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
@@ -53,11 +71,12 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class)->withPivot('quantity');;
     }
 
     public function stock()
     {
         return $this->hasOne(Stock::class);
     }
+
 }
