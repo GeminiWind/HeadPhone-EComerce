@@ -35,6 +35,9 @@
                  <label for="description">Description</label>
                  <textarea name="description" id="description" rows="8">{{ $product->description}}</textarea>
                 </div>
+                
+                                     <br>
+                                     <div>
                                      <div class="form-group">
                                        <label for="unit">Unit</label>
                                        <input type="text" class="form-control" id="unit" name="unit"
@@ -45,7 +48,30 @@
                                        <input type="number" class="form-control" id="price" name="price"
                                           placeholder="Enter Unit" value="{{ $product->price }}">
                                     </div>
+                                       
+                                     <br>
+
+                                    <div>
                                     <div class="form-group">
+                 
+
+
+
+                  <div class="radio">
+                    <label>
+                      <input name="is_available" id="" value="1" {{ ($product->is_available) ? 'checked' : ''}} type="radio">
+                       Available
+                    </label>
+                  </div>
+                  <div class="radio">
+                   <label>
+                      <input name="is_available" id="" value="0" {{ (!$product->is_available) ?'checked' : ''}} type="radio">
+                      No Available
+                    </label>
+                  </div>
+
+
+
                   <div class="radio">
                     <label>
                       <input name="is_hot" id="" value="1" {{ ($product->is_hot) ? 'checked' : ''}} type="radio">
@@ -71,6 +97,11 @@
                       <input name="is_new" id="" value="0" {{ (!$product->is_new) ? 'checked' : ''}} type="radio">
                       No New
                     </label>
+                  </div>
+                                      
+                                    </div>
+                  <div>
+                   <br> 
                   </div>
                 </div>
               

@@ -12,8 +12,10 @@
                     Edit
                 </h4>
             </div>
+
             <div class="modal-body">
-                <form action="#" enctype="multipart/form-data" method="POST" role="form">
+
+                <form action=" {{ route('products.store') }}" enctype="multipart/form-data" method="POST" role="form">
                     {!! csrf_field() !!}
                     <div class="box-body">
                         <div class="form-group">
@@ -35,6 +37,9 @@
                                 @endforeach
                             </select>
                         </div>
+
+
+                         
                         <div class="form-group">
                             <label for="description">
                                 Description
@@ -46,8 +51,8 @@
                             <label for="unit">
                                 Unit
                             </label>
-                            <input class="form-control" id="unit" name="unit" placeholder="Enter Unit" type="text" value="{{ old('name' )}}">
-                            </input>
+                            {{-- <input class="form-control" id="unit" name="unit" placeholder="Enter Unit" type="text" value="{{ old('name' )}}">
+                            </input> --}}
                         </div>
                         <div class="form-group">
                             <label for="price">
