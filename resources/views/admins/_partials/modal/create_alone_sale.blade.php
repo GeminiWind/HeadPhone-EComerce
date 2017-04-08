@@ -13,7 +13,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.alone_sale.store',$product->slug) }}" enctype="multipart/form-data" method="POST" role="form">
+                <form action="{{ route('products.store',$product->slug) }}" enctype="multipart/form-data" method="POST" role="form">
                     {!! csrf_field() !!}
                     <div class="box-body">
                         <div class="form-group">

@@ -1,3 +1,5 @@
+<link href="{!! asset('css/admin/bootstrap/css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
 @extends('layouts/customer/master')
 @section('content')
 <div class="container">

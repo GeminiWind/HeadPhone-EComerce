@@ -38,7 +38,11 @@
               <li class="user-footer">
                 <div class="pull-right">
                   <form action="{{ route('admin.logout') }}" method="POST">
+
+                    <input type="hidden" name="_method" value="PUT">
                     {!! csrf_field()!!}
+
+
                       <button type="submit" class="btn btn-default btn-flat">Sign out</button>
                     }
                   </form>

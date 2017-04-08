@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+
+    protected $table   = 'products';
     protected $guarded = ['id', 'category_id', 'brand_id'];
 
     protected $casts = [
@@ -41,10 +43,10 @@ class Product extends Model
         return $this->morphMany(Like::class, 'likeable');
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+    // public function category()
+    // {
+    //     return $this->belongsTo(Category::class);
+    // }
 
     public function brand()
     {
@@ -60,4 +62,26 @@ class Product extends Model
     {
         return $this->hasOne(Stock::class);
     }
+    //
+
+    public function category()
+    {
+        # code...
+        return $this->belongsTo('App\Models\Category');
+
+    }
+
+    public function orderProduct()
+    {
+        # code...
+        return $this->belongsToMany('App\Models\OrderProduct', 'product_id');
+    }
+
+    public function stoke()
+    {
+        # code...
+        return $this->belongsTo('App\Models\Stoke', 'stoke_id');
+
+    }
+
 }

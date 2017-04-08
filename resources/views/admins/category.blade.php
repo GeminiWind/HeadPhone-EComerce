@@ -1,3 +1,5 @@
+<link href="{!! asset('css/admin/bootstrap/css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
 @push('css')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('plugns/sweetalert2/sweetalert2.min.css') }}">
@@ -36,8 +38,9 @@
                               </h4>
                            </div>
                            <div class="modal-body">
-                              <form role="form" action="{{route('admin.category.store')}}" method="POST">
+                              <form role="form" action="{{route('cate.index')}}" method="POST">
                                  {!! csrf_field() !!}
+                                 <input type="hidden" name="_method">
                                  <div class="box-body">
                                     <div class="form-group">
                                        <label for="name">Category Name</label>
@@ -119,7 +122,7 @@
                                     </h4>
                                  </div>
                                  <div class="modal-body">
-                                    <form role="form" action="{{route('admin.category.update', $category->slug)}}" method="POST">
+                                    <form role="form" action="{{route('cate.update', $category->slug)}}" method="POST">
                                        {!! csrf_field() !!}
                                        <input name="_method" type="hidden" value="PUT">
                                        <div class="box-body">
@@ -163,7 +166,7 @@
                                     <button class="btn btn-default" data-dismiss="modal" type="button">
                                     Close
                                     </button>
-                                    <a class="btn btn-danger" href="{{route('admin.category.delete',['slug' => $category->slug])}}">
+                                    <a class="btn btn-danger" href="{{route('cate.destroy',['slug' => $category->slug])}}">
                                     Yes, I m sure
                                     </a>
                                  </div>
