@@ -4,7 +4,7 @@
                 <div class="pull-left auto-width-left">
                     <ul class="top-menu menu-beta l-inline">
                         <li><a href=""><i class="fa fa-home"></i> 3D Duy Tân, Dịch Vọng Hậu, Cầu Giấy</a></li>
-                        <li><a href=""><i class="fa fa-phone"></i> 0163 296 7751</a></li>
+                        <li><a href=""><i class="fa fa-phone"></i> +84 123456789 </a></li>
                     </ul>
                 </div>
                 <div class="pull-right auto-width-right">
