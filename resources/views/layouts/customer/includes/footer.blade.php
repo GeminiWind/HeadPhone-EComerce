@@ -107,23 +107,24 @@
                     <h4 class="widget-title">
                         Hệ thống cửa hàng
                     </h4>
+                    <div>
+                        <div class="contact-info">
+                            <i class="fa fa-map-marker">
+                            </i>
+                            <p>
+                                3D Duy Tân, Hà Nội Phone: +84 123456789
+                            </p>
+                            <p>
+                                4D Con Rùa, Hà Nội Phone: +84 987654321
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div>
-    <div class="contact-info">
-        <i class="fa fa-map-marker">
-        </i>
-        <p>
-            3D Duy Tân, Hà Nội Phone: +84 123456789
-        </p>
-        <p>
-            4D Con Rùa, Hà Nội Phone: +84 987654321
-        </p>
-    </div>
-</div>
+
 <!-- .row -->
 <!-- .container -->
 <!-- #footer -->

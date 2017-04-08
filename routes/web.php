@@ -63,5 +63,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LogOutController@logout')->name('admin.logout');
     Route::get('/', 'AdminController@index');
-    Route::resource('category', 'CategoryController');
+    Route::resource('category', 'Admin\CategoryController');
 });
