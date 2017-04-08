@@ -40,3 +40,4 @@ Route::get('dang-ky',function(){
 Route::get('product-detail', function(){
 	return view('customers.product_detail');
 });
+Route::resource('category', 'CategoryController');
