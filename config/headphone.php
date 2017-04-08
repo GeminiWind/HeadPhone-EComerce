@@ -4,5 +4,5 @@ return [
 
  /*  Path for upload images of product*/
 
-    'products' => 'images/products/'
+    'products' => '/images/products/'
 ];

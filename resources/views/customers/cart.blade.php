@@ -16,10 +16,13 @@
 
 <div class="container">
 	<div id="content">
+		<form action="{{ route('checkout') }}" method="POST">
+			{!! csrf_field() !!}
+			<button type="sbumit" class="btn btn-primary">Checkout</button>
+		</form>
 		
-		<form action="{{route('dathang')}}" method="post" class="beta-form-checkout">
+		<form action="#" method="post" class="beta-form-checkout">
 			<input type="hidden" name="_token" value="{{csrf_token()}}">
-			<div class="row">@if(Session::has('thongbao')){{Session::get('thongbao')}}@endif</div>
 			<div class="row">
 				<div class="col-sm-6">
 					<h4>Đặt hàng</h4>
@@ -63,26 +66,24 @@
 						<div class="your-order-body" style="padding: 0px 10px">
 							<div class="your-order-item">
 								<div>
-								@if(Session::has('cart'))
-								@foreach($product_cart as $cart)
+								@foreach(Cart::content() as $item)
 								<!--  one item	 -->
 									<div class="media">
-										<img width="25%" src="source/image/product/{{$cart['item']['image']}}" alt="" class="pull-left">
+										<img width="25%" src="{{ Config::get('headphone.products', '/images/products/')}}{{ $item->options->main_image}}" alt="" class="pull-left">
 										<div class="media-body">
-											<p class="font-large">{{$cart['item']['name']}}</p>
-											<span class="color-gray your-order-info">Đơn giá: {{number_format($cart['price'])}} đồng</span>
-											<span class="color-gray your-order-info">Số lượng: {{$cart['qty']}}</span>
+											<p class="font-large">{{ $item->name }}</p>
+											<span class="color-gray your-order-info">Đơn giá: {{number_format($item->price)}} đồng</span>
+											<span class="color-gray your-order-info">Số lượng: {{$item->qty}}</span>
 										</div>
 									</div>
 								<!-- end one item -->
 								@endforeach
-								@endif
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="your-order-item">
 								<div class="pull-left"><p class="your-order-f18">Tổng tiền:</p></div>
-								<div class="pull-right"><h5 class="color-black">@if(Session::has('cart')){{number_format($totalPrice)}}@else 0 @endif đồng</h5></div>
+								<div class="pull-right"><h5 class="color-black">@if(Cart::count()>0){{Cart::subtotal(0,'','.')}} @else 0 @endif đồng</h5></div>
 								<div class="clearfix"></div>
 							</div>
 						</div>
