@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('products.index') }}">
                     <i class="fa fa-cube">
                     </i>
                     Product
