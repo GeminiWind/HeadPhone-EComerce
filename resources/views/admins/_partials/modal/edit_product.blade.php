@@ -13,7 +13,7 @@
                                     </h4>
                                  </div>
                                  <div class="modal-body">
-                                   <form role="form" action="{{ route('products.edit',['id' => $product->id]) }}" method="GET" enctype="multipart/form-data">
+                                   <form role="form" action="{{ route('products.update',['id' => $product->id]) }}" method="GET" enctype="multipart/form-data">
                                     <input name="_method" type="hidden" value="PUT">
                                  {!! csrf_field() !!}
                                  <div class="box-body">
