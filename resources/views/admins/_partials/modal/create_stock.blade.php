@@ -21,7 +21,7 @@
                                 Product
                             </label>
                             <select name="product_id">
-                                @foreach ($all_products as $product)
+                                @foreach ($allProducts as $product)
                                 <option value="{{ $product->id}}">
                                     {{$product->name}}
                                 </option>
