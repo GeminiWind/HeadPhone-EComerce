@@ -42,9 +42,27 @@
                   </i>
                   Add new prdouct
                   </button>
+
                @include('admins._partials.modal.create_product')
                </h3>
             </div>
+            @if(count($errors)>0)
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $err)
+                {{ $err }}
+                    <br>
+                        {{-- expr --}}
+                @endforeach
+                    </br>
+                </div>
+                @endif
+            @if (session('thongbao'))
+            <div class="alert alert-success">
+                    {{ session('thongbao') }}
+                </div>
+
+              {{-- expr --}}
+            @endif
             <!-- /.box-header -->
             <div class="box-body">
                <table aria-describedby="example1_info" class="table table-bordered table-striped dataTable" id="example1" role="grid">
@@ -74,9 +92,9 @@
                         <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
                            New
                         </th>
-                        <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
+                       {{--  <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
                            Sale
-                        </th>
+                        </th> --}}
                         <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
                            Description
                         </th>
@@ -107,6 +125,7 @@
                          <td>
                            {{ $product->category->name }}
                         </td>
+                         
                          <td>
                            {{ $product->price }}
                         </td>
@@ -119,35 +138,55 @@
                          <td>
                            {{ ($product->is_new) ? 'New' : 'No' }}
                         </td>
-                          <td>
+                          {{-- <td>
                            {{ $product->isAloneSaleNow() ? 'On Sale'.$product->getRateAloneSaleNow()->rate :'No Sale'   }}
-                        </td>
+                        </td> --}}
                          <td>
                            {{ str_limit($product->description, $limit = 100, $end = "...") }}
                         </td>
-                       
+                        
                         <td>
                           <button class="btn btn-success pull-right" data-target="#markAsSaleFromNow{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
                            <i class="fa fa-gift">
                            </i>
                            </button>
+
+
                            <button class="btn btn-info pull-right" data-target="#editProductId{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
                            <i class="fa fa-pencil">
                            </i>
                            </button>
-                            <button class="btn btn-danger pull-right" data-target="#deleteProductId{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
+
+
+
+                           {{--  <button class="btn btn-danger pull-right" data-target="#editProductId1{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
+                           <i class="fa fa-trash">
+                           </i>
+                           </button> --}}
+                           <button class="btn btn-danger pull-right" data-target="#deleteProductId{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
                            <i class="fa fa-trash">
                            </i>
                            </button>
-                          @include('admins._partials.modal.edit_product', ['product' => $product ])
-                          @include('admins._partials.modal.delete_product', ['product' => $product ])
+                           
+                           
+                           @include('admins._partials.modal.delete_product', ['product' => $product ])
+                           @include('admins._partials.modal.edit_product', ['product' => $product ])
+                          {{-- @include('admins._partials.modal.delProduct', ['product' => $product ]) --}}
+                          
+                          
                         </td>
                         <td>
+                           {{ str_limit($product->created_at, $limit = 100, $end = "...") }}
+                        </td>
+                         <td>
+                           {{ str_limit($product->updated_at, $limit = 100, $end = "...") }}
+                        </td>
+                        {{-- <td>
                            {{$product->created_at->diffForHumans()}}
                         </td>
                         <td>
                            {{$product->updated_at->diffForHumans()}}
-                        </td>
+                        </td> --}}
                      </tr>
                      @endforeach
                   <tfoot>
@@ -189,4 +228,5 @@
         $("#example1").DataTable();
          });
     </script>
+
    @endpush
