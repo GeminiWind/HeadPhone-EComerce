@@ -30,10 +30,10 @@
                  <div class="row post">
                     <div class="col-md-2 pull-left">
                         <h5>
-                            <strong>3</strong>
+                            <strong>{{$post->created_at->format('d')}}</strong>
                         </h5>
                         <h5>
-                            Feb
+                             {{substr($post->created_at->format('F'),0,3)}}
                         </h5>
                     </div>
                     <div class="col-md-10">
@@ -53,6 +53,7 @@
                     </div>
                 </div>
             @endforeach
+            <div class="row">{{$posts->links()}}</div>
             </div>
              <div class="col-sm-3 aside">
                 <div class="widget">

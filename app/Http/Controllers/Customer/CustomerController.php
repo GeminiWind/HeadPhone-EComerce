@@ -26,8 +26,8 @@ class CustomerController extends Controller
     	{
     		 $customer->password = bcrypt($request->password);
         	 $customer->save();
-        	 return redirect()->back()->with('statusChangePwd', 'success');
+        	 return redirect()->back()->with('status', 'success');
     	}
-    	return redirect()->back()->with('statusChangePwd', 'fail');
+    	return redirect()->back()->with('status', 'error');
     }
 }

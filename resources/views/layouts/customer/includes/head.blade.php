@@ -14,6 +14,8 @@
     <link href="{{ asset('customer/css/style.css') }}" rel="stylesheet" title="style">
     <link href="{{ asset('customer/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('customer/css/mystyle.css') }}" rel="stylesheet" title="style">
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
+    <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     @stack('css')
     @stack('style')
     @stack('js-head')

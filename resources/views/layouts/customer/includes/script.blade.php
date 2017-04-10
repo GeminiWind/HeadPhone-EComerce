@@ -37,5 +37,23 @@
 		
 	})
 </script>
+@if(session('status') === 'success')
+<script>
+    swal({
+		 title: 'Success!!!',
+		 type: 'success',
+		 text:'Thanks you',
+		 timer:2000
+		})
+</script>
+@elseif(session('status') === 'error')
+<script type="text/javascript">
+    swal({
+		 title: 'Whoops, something went wrong',
+		 type: 'error',
+		 text:'Try again'
+		})
+</script>
+@endif 
 @stack('js')
 @stack('script')

@@ -1,7 +1,12 @@
 @component('mail::message')
 # Hello
 
-######Below was your order. Please confirm.
+###You placed an order in Headphone.Check the information below
+
+##### Receiver
+###### Name: {{ $order->receiver->name }}
+###### Telephone : {{ $order->receiver->telephone }}
+###### Address : {{ $order->receiver->address }}
 
 @component('mail::table')
 | Product      			  | Qty           | Price  					  |

@@ -16,48 +16,47 @@
 
 <div class="container">
 	<div id="content">
-		<form action="{{ route('checkout') }}" method="POST">
+		<form action="{{ route('checkout') }}" method="post" class="beta-form-checkout">
 			{!! csrf_field() !!}
-			<button type="sbumit" class="btn btn-primary">Checkout</button>
-		</form>
-		
-		<form action="#" method="post" class="beta-form-checkout">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
+			
 			<div class="row">
 				<div class="col-sm-6">
 					<h4>Đặt hàng</h4>
 					<div class="space20">&nbsp;</div>
-
-					<div class="form-block">
-						<label for="name">Họ tên*</label>
-						<input type="text" name="name" placeholder="Họ tên" required>
+						<div class="form-block">
+						<label>Thông tin người nhận  </label>
+						@if(Auth::guard('web')->check() && Auth::guard('web')->user()->address && Auth::guard('web')->user()->telephone)
+						<input id="receiver_type" type="radio" class="input-radio" name="receiver_type" value="auth" checked="checked" style="width: 10%"><span>tài khoản</span>
+						<input id="receiver_type" type="radio" class="input-radio" name="receiver_type" value="manually" style="width: 10%"><span>Thông tin khác</span>
+						@else
+						<input id="receiver_type" type="radio" class="input-radio" name="receiver_type" value="manually" style="width: 10%" checked><span>Thông tin khác</span>
+						@endif
+									
 					</div>
 					<div class="form-block">
-						<label>Giới tính </label>
-						<input id="gender" type="radio" class="input-radio" name="gender" value="nam" checked="checked" style="width: 10%"><span style="margin-right: 10%">Nam</span>
-						<input id="gender" type="radio" class="input-radio" name="gender" value="nữ" style="width: 10%"><span>Nữ</span>
-									
+						<label for="name">Họ tên*</label>
+						<input type="text" name="name" placeholder="Họ tên" \>
 					</div>
 
 					<div class="form-block">
 						<label for="email">Email*</label>
-						<input type="email" id="email" name="email" required placeholder="expample@gmail.com">
+						<input type="email" id="email" name="email" \ placeholder="expample@gmail.com">
 					</div>
 
 					<div class="form-block">
 						<label for="adress">Địa chỉ*</label>
-						<input type="text" id="address" name="address" placeholder="Street Address" required>
+						<input type="text" id="address" name="address" placeholder="Street Address" \>
 					</div>
 					
 
 					<div class="form-block">
 						<label for="phone">Điện thoại*</label>
-						<input type="text" id="phone" name="phone" required>
+						<input type="text" id="phone" name="telephone" \>
 					</div>
 					
 					<div class="form-block">
 						<label for="notes">Ghi chú</label>
-						<textarea id="notes" name="notes"></textarea>
+						<textarea id="note" name="note"></textarea>
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -92,7 +91,7 @@
 						<div class="your-order-body">
 							<ul class="payment_methods methods">
 								<li class="payment_method_bacs">
-									<input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="COD" checked="checked" data-order_button_text="">
+									<input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="SHIP" checked="checked" data-order_button_text="">
 									<label for="payment_method_bacs">Thanh toán khi nhận hàng </label>
 									<div class="payment_box payment_method_bacs" style="display: block;">
 										Cửa hàng sẽ gửi hàng đến địa chỉ của bạn, bạn xem hàng rồi thanh toán tiền cho nhân viên giao hàng

@@ -53,7 +53,7 @@
                                         <a class="pull-left" href="#"><img src="{{ Config::get('headphone.products', '/images/products/')}}{{ $item->options->main_image}}" alt=""></a>
                                         <div class="media-body">
                                             <span class="cart-item-title">{{ $item->name }}</span>
-                                            <span class="cart-item-amount">thnah tien</span></span>
+                                            <span class="cart-item-amount">{{ number_format($item->price*$item->qty,0,".",",") }}</span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -90,6 +90,7 @@
                         </li>
                         <li><a href="{{route('about')}}">Giới thiệu</a></li>
                         <li><a href="{{route('contact')}}">Liên hệ</a></li>
+                        <li><a href="{{route('post.index')}}">Tin tức</a></li>
                     </ul>
                     <div class="clearfix"></div>
                 </nav>

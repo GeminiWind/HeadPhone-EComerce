@@ -20,6 +20,17 @@ Route::name('about')->get('about', function () {
 Route::name('contact')->get('contact', function () {
     return view('customers.contact');
 });
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('login', 'Auth\LoginController@showLoginForm');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LogOutController@logout')->name('admin.logout');
+    Route::get('/', 'AdminController@index');
+    Route::resource('category', 'CategoryController',['except' => ['show']]);
+});
+
 Route::group(['namespace' => 'Customer'], function () {
     Auth::routes();
     //Social Login
@@ -53,15 +64,4 @@ Route::group(['namespace' => 'Customer'], function () {
     //Browse
     Route::get('/{categorySlug}', 'CategoryController@show')->name('category.show');
     Route::get('/{categorySlug}/{productSlug}', 'ProductController@show')->name('product.show');
-});
-
-
-Route::get('/home', 'HomeController@index');
-
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
-    Route::get('login', 'Auth\LoginController@showLoginForm');
-    Route::post('login', 'Auth\LoginController@login');
-    Route::post('logout', 'Auth\LogOutController@logout')->name('admin.logout');
-    Route::get('/', 'AdminController@index');
-    Route::resource('category', 'CategoryController');
 });

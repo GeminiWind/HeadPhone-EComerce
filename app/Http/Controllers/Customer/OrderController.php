@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\PlaceOrderMail;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Receiver;
 use Auth;
 use Cart;
 use Illuminate\Http\Request;
@@ -22,8 +23,9 @@ class OrderController extends Controller
     {
         $customer = Auth::user();
         //create order
-        $order        = new Order;
-        $order->total = Cart::subtotal(0, '', '');
+        $order                 = new Order;
+        $order->total          = Cart::subtotal(0, '', '');
+        $order->payment_method = $request->payment_method;
         $order->user()->associate($customer);
         $order->save();
         foreach (Cart::content() as $item) {
@@ -35,11 +37,31 @@ class OrderController extends Controller
             $stock->save();
         }
         $order->save();
+        $receiver = new Receiver();
+        if ($request->receiver_type === 'auth') {
+            $receiver->forceFill([
+                'name'      => Auth::guard('web')->user()->name,
+                'email'     => Auth::guard('web')->user()->email,
+                'address'   => Auth::guard('web')->user()->address,
+                'telephone' => Auth::guard('web')->user()->telephone,
+                'note'      => $request->note,
+            ]);
+            $order->receiver()->save($receiver);
+        } else {
+            $receiver->forceFill([
+                'name'      => $request->name,
+                'email'     => $request->email,
+                'address'   => $request->address,
+                'telephone' => $request->telephone,
+                'note'      => $request->note,
+            ]);
+            $order->receiver()->save($receiver);
+        }
         //Send Mail To Customer
-        Mail::to($customer->email)->send(new PlaceOrderMail($order));
+        Mail::to($order->receiver->email)->send(new PlaceOrderMail($order));
         //clean the cart
         Cart::destroy();
 
-        return redirect()->back();
+        return redirect()->back()->with('status', 'success');
     }
 }

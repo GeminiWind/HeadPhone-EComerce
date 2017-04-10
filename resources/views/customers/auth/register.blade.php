@@ -43,8 +43,8 @@
 
 
 						<div class="form-block">
-							<label for="phone">Phone*</label>
-							<input type="text" name="phone" required>
+							<label for="phone">Telephone*</label>
+							<input type="text" name="telephone" required>
 						</div>
 						<div class="form-block">
 							<label for="phone">Password*</label>

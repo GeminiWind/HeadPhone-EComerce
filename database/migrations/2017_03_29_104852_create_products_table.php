@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->json('image');
             $table->tinyInteger('is_hot')->default(0);
             $table->tinyInteger('is_new')->default(0);
-            $table->tinyInteger('is_available')->default(0);
+            $table->tinyInteger('is_available')->default(1);
             $table->tinyInteger('guarantee_duration');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
