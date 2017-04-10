@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CateRequest;
+use App\Http\Requests\CateRequestUpdate;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -24,7 +25,6 @@ class CategoryController extends Controller
         return view('admins.category', compact('cateData'));
     }
 
-   
     /**
      * Store a newly created resource in storage.
      *
@@ -40,8 +40,6 @@ class CategoryController extends Controller
         return redirect()->route('category.index')->with(['flash_message' => 'Sussess complete add category']);
     }
 
-    
-
     /**
      * Update the specified resource in storage.
      *
@@ -49,11 +47,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CateRequest $request, $id)
+    public function update(CateRequestUpdate $request, $id)
     {
         $category = Category::findOrFail($id);
         $category->update($request->all());
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with(['flash_message' => 'Update completed description']);
     }
 
     /**
@@ -65,6 +63,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with(['flash_message' => 'Delete completed a category']);
     }
 }
