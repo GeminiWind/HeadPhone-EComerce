@@ -43,7 +43,7 @@
                   Add new prdouct
                   </button>
 
-               @include('admins._partials.modal.create_product')
+               @include('admins._partials.modal.product.create')
                </h3>
             </div>
             @if(count($errors)>0)
@@ -138,42 +138,23 @@
                          <td>
                            {{ ($product->is_new) ? 'New' : 'No' }}
                         </td>
-                          {{-- <td>
-                           {{ $product->isAloneSaleNow() ? 'On Sale'.$product->getRateAloneSaleNow()->rate :'No Sale'   }}
-                        </td> --}}
                          <td>
                            {{ str_limit($product->description, $limit = 100, $end = "...") }}
                         </td>
                         
                         <td>
-                          <button class="btn btn-success pull-right" data-target="#markAsSaleFromNow{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
-                           <i class="fa fa-gift">
-                           </i>
-                           </button>
-
-
                            <button class="btn btn-info pull-right" data-target="#editProductId{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
                            <i class="fa fa-pencil">
                            </i>
                            </button>
-
-
-
-                           {{--  <button class="btn btn-danger pull-right" data-target="#editProductId1{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
-                           <i class="fa fa-trash">
-                           </i>
-                           </button> --}}
                            <button class="btn btn-danger pull-right" data-target="#deleteProductId{{ $product->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
                            <i class="fa fa-trash">
                            </i>
                            </button>
                            
                            
-                           @include('admins._partials.modal.delete_product', ['product' => $product ])
-                           @include('admins._partials.modal.edit_product', ['product' => $product ])
-                          {{-- @include('admins._partials.modal.delProduct', ['product' => $product ]) --}}
-                          
-                          
+                           @include('admins._partials.modal.product.destroy', ['product' => $product ])
+                           @include('admins._partials.modal.product.edit', ['product' => $product ])
                         </td>
                         <td>
                            {{ str_limit($product->created_at, $limit = 100, $end = "...") }}
@@ -181,12 +162,12 @@
                          <td>
                            {{ str_limit($product->updated_at, $limit = 100, $end = "...") }}
                         </td>
-                        {{-- <td>
+                        <td>
                            {{$product->created_at->diffForHumans()}}
                         </td>
                         <td>
                            {{$product->updated_at->diffForHumans()}}
-                        </td> --}}
+                        </td>
                      </tr>
                      @endforeach
                   <tfoot>

@@ -1,4 +1,5 @@
-<div aria-labelledby="myModalLabel" class="modal fade" id="addNewCategory" role="dialog" tabindex="-1">
+<!-- Modal New -->
+<div aria-labelledby="myModalLabel" class="modal fade" id="addNewProduct" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,40 +9,134 @@
                     </span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Add new category
+                    Edit
                 </h4>
             </div>
+
             <div class="modal-body">
-                <form action="{{route('category.store')}}" method="POST" role="form">
+
+                <form action=" {{ route('products.store') }}" enctype="multipart/form-data" method="POST" role="form">
                     {!! csrf_field() !!}
                     <div class="box-body">
                         <div class="form-group">
                             <label for="name">
-                                Category Name
+                                Product Name
                             </label>
-                            <input class="form-control" id="name" name="name" placeholder="Nhập tên thể loại" type="text" value="{{ old('name' )}}">
+                            <input class="form-control" id="name" name="name" placeholder="Name of product" type="text" value="{{ old('name' )}}">
                             </input>
                         </div>
                         <div class="form-group">
-                            <label for="name">
+                            <label for="category_id">
+                                Category
+                            </label>
+                            <select name="category_id">
+                                @foreach ($categoryList as $category)
+                                <option value="{{ $category->id}}">
+                                    {{ $category->name }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                           <div class="form-group">
+                            <label for="brand_id">
+                                Brand
+                            </label>
+                            <select name="brand_id">
+                                @foreach ($brandList as $brand)
+                                <option value="{{ $brand->id}}">
+                                    {{ $brand->name }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>                
+                        <div class="form-group">
+                            <label for="description">
                                 Description
                             </label>
-                            <textarea class="form-control" name="description" placeholder="Nhap mo ta cho Category">
-                                {{ old('description' )}}
+                            <textarea id="description" name="description" rows="8">
                             </textarea>
                         </div>
-                        <div class="box-footer" style="text-align: right;">
-                            <button class="btn btn-primary" type="submit">
-                                Xác nhận
-                            </button>
-                            <button class="btn btn-default" data-dismiss="modal" type="button">
-                                Close
-                            </button>
+                        <div class="form-group">
+                            <label for="price">
+                                Price
+                            </label>
+                            <input class="form-control" id="price" name="price" placeholder="Enter Unit" type="number" value="{{ old('proce' )}}">
+                            </input>
                         </div>
-                        <div class="modal-footer">
+                        <div class="form-group">
+                            <label for="guarantee_duration">
+                                Guaranee Duration
+                            </label>
+                            <input class="form-control" id="price" name="guarantee_duration" placeholder="Enter Unit" type="number" value="">
+                            </input>
+                        </div>
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input checked="" id="" name="is_hot" type="radio" value="0">
+                                        No Hot
+                                    </input>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input id="" name="is_hot" type="radio" value="1">
+                                        Hot
+                                    </input>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input checked="" id="" name="is_new" type="radio" value="0">
+                                        No New
+                                    </input>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input id="" name="is_new" type="radio" value="1">
+                                        New
+                                    </input>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input checked="" id="" name="is_available" type="radio" value="0">
+                                        Not Available
+                                    </input>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input id="" name="is_available" type="radio" value="1">
+                                        Available
+                                    </input>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">
+                                Image
+                            </label>
+                            <input class="form-control" id="image" name="image" type="file">
+                            </input>
+                        </div>
+                        <div class="box-footer">
+                            <button class="btn btn-primary" type="submit">
+                                Submit
+                            </button>
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" type="button">
+                    Close
+                </button>
             </div>
         </div>
     </div>
