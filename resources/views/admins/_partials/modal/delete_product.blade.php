@@ -1,4 +1,4 @@
-<!-- Modal Delete -->
+<!-- Modal Update -->
 <div aria-labelledby="myModalLabel" class="modal fade" id="deleteProductId{{ $product->id }}" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -9,20 +9,27 @@
                     </span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Warning
+                    Delete
                 </h4>
             </div>
             <div class="modal-body">
-                Are you sure to delete category {{ $product->name }}
+                <label for="name">
+                    Delete  {{ $product->name}} ?
+                </label>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal" type="button">
+        </div>
+        <div class="modal-footer">
+            <form accept-charset="utf-8" action="{{route('products.destroy',['id' => $product->id])}}" method="POST">
+                
+               
+                     <button class="btn btn-default " data-dismiss="modal" type="button">
                     Close
                 </button>
-                <a class="btn btn-danger" href="{{route('admin.product.delete',['slug' => $product->slug])}}">
-                    Yes, I m sure
-                </a>
-            </div>
+                 <input name="_method" type="hidden" value="DELETE">
+                    {!! csrf_field() !!}
+                    <input class="btn btn-danger" type="submit" value="Ok">
+                    </input>
+            </form>
         </div>
     </div>
 </div>
