@@ -1,11 +1,7 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('plugins/backend/plugins/datatables/dataTables.bootstrap.css') }}">
- <link rel="stylesheet" href="{{ elixir('css/frontend/sweetalert.css') }}">
 @endpush
-@push('js-head')
-    <script src="{{ elixir('js/frontend/sweetalert.js') }}"></script>
-@endpush
-@extends('admin.layout.master')
+@extends('layouts.admin.master')
 @section('content')
  @if (session('statusCreateStock')=='success' || session('statusUpdateStock')=='success' || session('statusDeleteDelete')=='success')
   <script type="text/javascript">
@@ -37,12 +33,6 @@
             <div class="box-header">
                <h3 class="box-title">
                   Stock Management
-                  <button class="btn btn-primary pull-primary" data-target="#addNewProduct" data-toggle="modal" style="margin-right: 5px;" type="button">
-                  <i class="fa fa-plus">
-                  </i>
-                  Add new stock
-                  </button>
-               @include('admin._partials.modal.create_stock')
                </h3>
             </div>
             <!-- /.box-header -->
@@ -61,9 +51,6 @@
                         </th>
                         <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
                            Price
-                        </th>
-                        <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
-                           Tool
                         </th>
                         <th aria-controls="example1" aria-label="Engine version: activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 115px;" tabindex="0">
                            Created At
@@ -84,23 +71,12 @@
                            {{ $stock->product->name }}
                         </td>
                         <td>
-                           {{ $stock->qty }}
+                           {{ $stock->quantity }}
                         </td>
                          <td>
                            {{ $stock->import_price }}
                         </td>
-                        <td>
-                           <button class="btn btn-info pull-right" data-target="#editStockId{{ $stock->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
-                           <i class="fa fa-pencil">
-                           </i>
-                           </button>
-                            <button class="btn btn-danger pull-right" data-target="#deleteStockId{{ $stock->id }}" data-toggle="modal" style="margin-right: 5px;" type="button">
-                           <i class="fa fa-trash">
-                           </i>
-                           </button>
-                          @include('admin._partials.modal.edit_stock', ['stock' => $stock ])
-                          @include('admin._partials.modal.delete_stock', ['stock' => $stock ])
-                        </td>
+                      {{--  --}}
                         <td>
                            {{$stock->created_at->diffForHumans()}}
                         </td>
@@ -122,9 +98,6 @@
                         </th>
                            <th colspan="1" rowspan="1">
                            Price
-                        </th>
-                        <th colspan="1" rowspan="1">
-                           Tool
                         </th>
                         <th colspan="1" rowspan="1">
                            Create At

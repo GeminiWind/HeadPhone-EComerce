@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'AdminController@index');
     Route::resource('category', 'CategoryController',['except' => ['show']]);
     Route::resource('products','ProductController', ['except' => ['show', 'create', 'edit']]);
+    Route::resource('stock','StockController', ['except' =>['show','edit', 'create']]);
 });
 
 Route::group(['namespace' => 'Customer'], function () {
