@@ -108,11 +108,7 @@
                         Hệ thống cửa hàng
                     </h4>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div>
+                <div>
     <div class="contact-info">
         <i class="fa fa-map-marker">
         </i>
@@ -124,6 +120,11 @@
         </p>
     </div>
 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- .row -->
 <!-- .container -->
 <!-- #footer -->
