@@ -47,11 +47,13 @@
                             Order History
                         </a>
                     </li>
+                    @if(Auth::guard('web')->user()->socialacount()->count() === 0)
                     <li>
                         <a data-toggle="pill" href="#change_password">
                             Change Password
                         </a>
                     </li>
+                    @endif
                 </ul>
             </div>
             <div class="col-md-9">

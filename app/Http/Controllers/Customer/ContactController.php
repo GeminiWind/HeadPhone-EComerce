@@ -26,10 +26,10 @@ class ContactController extends Controller
         ], $messages);
         $myEmail = 'headphone@gmail.com';
         if ($validator->fails()) {
-        	return back()->withErrors($validator)->withInput()->with('statusSendContact','error');
+        	return back()->withErrors($validator)->withInput()->with('status','error');
         } else {
         	Mail::to($myEmail)->send(new ContactGiven($request));
-        	return back()->with('statusSendContact','success');
+        	return back()->with('status','success');
         }
        
     }

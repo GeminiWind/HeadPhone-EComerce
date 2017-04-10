@@ -2,7 +2,11 @@
 
 return [
 
- /*  Path for upload images of product*/
+    /*  Path for upload images of product*/
 
-    'products' => '/images/products/'
+    'products'       => '/images/products/',
+    'payment_method' => [
+        'SHIP' => 0,
+        'ATM'  => 1,
+    ],
 ];

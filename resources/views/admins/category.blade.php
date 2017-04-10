@@ -4,20 +4,17 @@
 @endpush
 @push('js-head')
 <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-<script src="js/admin/myscript.js"></script>
 @endpush
 @extends('layouts.admin.master')
 @section('content')
 <div class="content-wrapper" style="min-height: 901px;">
    <div style="padding: 0px; background: white; z-index: 999999; font-size: 16px; font-weight: 600;">
    </div>
-
    <section class="content">
       @if (Session::has('flash_message'))
       <div class="alert alert-success">
          {{session('flash_message')}}
       </div>
-
       @endif
       @if (count($errors)>0)
       <div class="alert alert-danger">
@@ -26,8 +23,6 @@
          @endforeach
       </div>
       @endif
-      
-
       <div class="row">
          <div class="col-xs-12">
             <div class="box-header">
@@ -39,47 +34,7 @@
                      Add new category
                   </button>
                   <!-- Modal New -->
-                  <div aria-labelledby="myModalLabel" class="modal fade" id="addNewCategory" role="dialog" tabindex="-1">
-                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                                 <span aria-hidden="true">
-                                    ×
-                                 </span>
-                              </button>
-                              <h4 class="modal-title" id="myModalLabel">
-                                 Add new category
-                              </h4>
-                           </div>
-                           <div class="modal-body">
-                              <form role="form" action="{{route('category.store')}}" method="POST">
-                                 {!! csrf_field() !!}
-                                 <div class="box-body">
-                                    <div class="form-group">
-                                       <label for="name">Category Name</label>
-                                       <input type="text" class="form-control" id="name" name="name"
-                                       placeholder="Nhập tên thể loại" value="{{ old('name' )}}">
-                                    </div>
-                                    <div class="form-group">
-                                       <label for="name">Description</label>
-                                       <textarea class="form-control" placeholder="Nhap mo ta cho Category" name="description" >{{ old('description' )}}</textarea>
-                                    </div>
-                                    <div class="box-footer" style="text-align: right;">
-                                       <button type="submit" class="btn btn-primary">Xác nhận</button>
-                                       <button class="btn btn-default" data-dismiss="modal" type="button"> Close </button>
-                                    </div>
-                                    <div class="modal-footer">
-
-                                    </div>
-                                 </div>
-                              </form>
-                           </div>
-                           
-                        </div>
-
-                     </div>
-                  </div>
+               @include('admins._partials.modal.product.create')
                </h3>
             </div>
             
@@ -135,83 +90,11 @@
                         </td>
 
                         <!-- Modal Update -->
-                        <div aria-labelledby="myModalLabel" class="modal fade" id="editCategoryId{{ $category->id }}" role="dialog" tabindex="-1">
-                           <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                 <div class="modal-header">
-                                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                                       <span aria-hidden="true">
-                                          ×
-                                       </span>
-                                    </button>
-                                    <h4 class="modal-title" id="myModalLabel">
-                                       Edit Category Description
-                                    </h4>
-                                 </div>
-                                 <div class="modal-body">
-                                    <form role="form" action="{{route('category.update', $category->id)}}" method="POST">
-                                       {!! csrf_field() !!}
-                                       {{-- {!! method_field('PUT') !!} --}}
-                                       <input name="_method" type="hidden" value="PUT">
-                                       <div class="box-body">
-                                          <div class="form-group">
-                                             <label for="description">Description</label>
-                                             <textarea class="form-control" placeholder="Nhap mo ta cho Category" name="description">
-                                                {{$category->description}}
-                                             </textarea>
-                                          </div>
-                                       </div>
-                                       
-                                       <div class="modal-footer">
-                                          <button type="submit" class="btn btn-primary">
-                                             Xác nhận
-                                          </button>
-                                          <button class="btn btn-default" data-dismiss="modal" type="button">
-                                             Close
-                                          </button>
-                                       </div>
-                                    </form>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                        @include('admins._partials.modal.product.edit', ['category' => $category])
                         <!-- End Modal Update -->
 
                         <!-- Modal Delete -->
-                        <div aria-labelledby="myModalLabel" class="modal fade" id="deleteCategoryId{{ $category->id }}" role="dialog" tabindex="-1">
-                           <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                 <div class="modal-header">
-                                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                                       <span aria-hidden="true">
-                                          ×
-                                       </span>
-                                    </button>
-                                    <h4 class="modal-title" id="myModalLabel">
-                                       Warning
-                                    </h4>
-                                 </div>
-                                 <div class="modal-body">
-                                    <form role="form" action="{{route('category.destroy', $category->id)}}" method="POST">
-                                       {!! csrf_field() !!}
-                                       <input name="_method" type="hidden" value="DELETE">
-                                       <div class="modal-body">
-                                          Are you sure to delete category {{ $category->name }}
-                                       </div>
-                                       <div class="modal-footer">
-
-                                          <button type="submit" class="btn btn-primary" >
-                                             Yes, I m sure
-                                          </button>
-                                          <button class="btn btn-default" data-dismiss="modal" type="button">
-                                             Close
-                                          </button>
-                                       </div>
-                                    </form>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                        @include('admins._partials.modal.product.destroy', ['category' => $category])
                         <!-- End Modal Delete -->
                         <td>
                            {{$category->created_at->diffForHumans()}}

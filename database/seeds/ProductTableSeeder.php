@@ -33,7 +33,7 @@ class ProductTableSeeder extends Seeder
 									CX 271 ear-canal phones
 									Ear adapter set (S/M/L)',
                 'image'        => '{"main":"In Ear/250_678_tai_nghe_sennheiser_cx271_chinh_hang.gif"}',
-                'is_hot'       => 0,
+                'is_hot'       => 1,
                 'is_new'       => 0,
                 'is_available' => 1,
                 'guarantee_duration' => 12,
@@ -69,7 +69,7 @@ class ProductTableSeeder extends Seeder
 									Storage pouch',
                 'image'        => '{"main":"In Ear/677_tai_nghe_sennheiser_cx281_chinh_hang.gif"}',
                 'is_hot'       => 0,
-                'is_new'       => 0,
+                'is_new'       => 1,
                 'is_available' => 1,
                 'guarantee_duration' => 12,
                 'category_id'  => 1,
