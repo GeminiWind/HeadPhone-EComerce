@@ -29,8 +29,11 @@ class OrderController extends Controller
         $order->user()->associate($customer);
         $order->save();
         foreach (Cart::content() as $item) {
-            $order->products()->attach([$item->id => ['quantity' => $item->qty]]);
+            $order->products()->attach([$item->id => ['quantity' => $item->qty, 'price' => $item->price]]);
             $product = Product::find($item->id);
+            //update the number of purchased product
+            $product->count = $product->count + $item->qty;
+            $product->save();
             //update stock
             $stock           = $product->stock;
             $stock->quantity = $stock->quantity - $item->qty;

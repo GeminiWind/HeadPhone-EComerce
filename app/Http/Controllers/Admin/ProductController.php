@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -71,7 +72,7 @@ class ProductController extends Controller
         } else {
             return redirect()->back()
                 ->withErrors($validator)
-                ->withInput();
+                ->withInput()->with('status','error');
         }
     }
 
@@ -118,7 +119,7 @@ class ProductController extends Controller
         } else {
             return redirect()->back()
                 ->withErrors($validator)
-                ->withInput();
+                ->withInput()->with('status','error');
         }
     }
 
@@ -132,6 +133,18 @@ class ProductController extends Controller
         }
         abort(404);
       
+    }
+
+    public function uploadImages(Request $request)
+    {
+            $image    = $request->file('file');
+            $name     = str_random(6).str_slug('LOL').'.' . $image->getClientOriginalExtension();
+            $category = Category::find(1);
+            $destination = substr(config('headphone.products'),1).$category->name;
+            $image->move($destination, $name);
+            $request->merge([
+               'image'  => '{"main": "{$catrgory->name}/{$name}"}',
+            ]);
     }
 
 }

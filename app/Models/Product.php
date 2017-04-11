@@ -5,6 +5,7 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\AvailableScope;
+use Carbon\Carbon;
 
 class Product extends Model
 {
@@ -16,6 +17,9 @@ class Product extends Model
         'is_available' => 'boolean',
         'image'        => 'array',
     ];
+    protected $attributes = ['current_price'];
+    protected $appends    = ['current_price'];
+
     use Sluggable;
 
     /**
@@ -49,6 +53,38 @@ class Product extends Model
         return $query->where('is_new', 1);
     }
 
+  
+
+    public function isSale(){
+        $current_time = Carbon::now()->toDateString();
+        foreach ($this->events()->get() as $sale) {
+            if ($sale->began_at < $current_time &&
+                $sale->ended_at > $current_time) {
+                return $sale;
+                break;
+            }
+        }
+        return null;
+    }
+
+    public function getCurrentPriceAttribute()
+    {
+        $sale = $this->isSale();
+        if ($sale != null)
+        {
+            $temp = ($this->price / 100) * $sale->rate;
+            $currentPrice = $this->price - $temp;
+            return $this->attributes['current_price'] = $currentPrice;
+        }
+        return $this->attributes['current_price'] = $this->price;
+        
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
@@ -71,7 +107,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class)->withPivot('quantity');;
+        return $this->hasMany(Order::class)->withPivot('quantity','price');;
     }
 
     public function stock()

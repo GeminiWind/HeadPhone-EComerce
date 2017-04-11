@@ -29,7 +29,7 @@
                             <label for="category_id">
                                 Category
                             </label>
-                            <select name="category_id">
+                            <select name="category_id" class="form-control">
                                 @foreach ($categoryList as $category)
                                 <option value="{{ $category->id}}">
                                     {{ $category->name }}
@@ -41,7 +41,7 @@
                             <label for="brand_id">
                                 Brand
                             </label>
-                            <select name="brand_id">
+                            <select name="brand_id" class="form-control">
                                 @foreach ($brandList as $brand)
                                 <option value="{{ $brand->id}}">
                                     {{ $brand->name }}
@@ -53,14 +53,14 @@
                             <label for="description">
                                 Description
                             </label>
-                            <textarea id="description" name="description" rows="8">
+                            <textarea id="description" name="description" rows="8" class="form-control">
                             </textarea>
                         </div>
                         <div class="form-group">
                             <label for="price">
                                 Price
                             </label>
-                            <input class="form-control" id="price" name="price" placeholder="Enter Unit" type="number" value="{{ old('proce' )}}">
+                            <input class="form-control" id="price" name="price" placeholder="Enter Unit" type="number" value="{{ old('proce' )}}" >
                             </input>
                         </div>
                         <div class="form-group">
@@ -71,7 +71,10 @@
                             </input>
                         </div>
                         <div class="form-group">
-                            <div class="radio">
+                  
+                            <div class="row">
+                            <div class="col-md-4">
+                                <div class="radio">
                                 <label>
                                     <input checked="" id="" name="is_hot" type="radio" value="0">
                                         No Hot
@@ -85,9 +88,9 @@
                                     </input>
                                 </label>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="radio">
+                            </div>
+                            <div class="col-md-4">
+                             <div class="radio">
                                 <label>
                                     <input checked="" id="" name="is_new" type="radio" value="0">
                                         No New
@@ -101,9 +104,9 @@
                                     </input>
                                 </label>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="radio">
+                            </div>
+                            <div class="col-md-4">
+                              <div class="radio">
                                 <label>
                                     <input checked="" id="" name="is_available" type="radio" value="0">
                                         Not Available
@@ -117,6 +120,8 @@
                                     </input>
                                 </label>
                             </div>
+                            </div>
+                        </div>
                         </div>
                      
                         <div class="box-footer">
@@ -133,7 +138,8 @@
                 </button>
             </div>
         </div>
-        <form action="/product/images/upload" class="dropzone" id="product-images" enctype="multipart/form-data">
+        <form action="/admin/product/images/upload" class="dropzone" id="product-images" enctype="multipart/form-data">
+        {!! csrf_field() !!}
                           <div>
                 <h3>Upload Product Image For Products. </h3>
                 <small>The first will be used as main image</small>

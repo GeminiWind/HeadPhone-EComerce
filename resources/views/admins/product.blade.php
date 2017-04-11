@@ -1,9 +1,5 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
-<link rel="stylesheet" href="{{ asset('plugns/sweetalert2/sweetalert2.min.css') }}">
-@endpush
-@push('js-head')
-    <script src="{{ asset('plugns/sweetalert2/sweetalert2.min.js') }}"></script>
 @endpush
 @extends('layouts.admin.master')
 @section('content')

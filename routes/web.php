@@ -21,8 +21,6 @@ Route::name('contact')->get('contact', function () {
     return view('customers.contact');
 });
 
-Route::get('/home', 'HomeController@index');
-
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('login', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login');
@@ -31,6 +29,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('category', 'CategoryController',['except' => ['show']]);
     Route::resource('products','ProductController', ['except' => ['show', 'create', 'edit']]);
     Route::resource('stock','StockController', ['except' =>['show','edit', 'create']]);
+    Route::resource('events','EventController');
+    Route::post('/product/images/upload','ProductController@uploadImages');
 });
 
 Route::group(['namespace' => 'Customer'], function () {

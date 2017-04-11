@@ -26,12 +26,16 @@ class ViewComposerProvider extends ServiceProvider
             $view->with('brandList', $brandList);
         });
         View::composer('*', function ($view) {
-            $hotProducts = Product::hot()->orderBy('name')->paginate(4);;
+            $hotProducts = Product::hot()->orderBy('name')->paginate(4);
             $view->with('hotProducts', $hotProducts);
         });
-          View::composer('*', function ($view) {
-            $newProducts = Product::latest()->orderBy('name')->paginate(4);;
+        View::composer('*', function ($view) {
+            $newProducts = Product::latest()->orderBy('name')->paginate(4);
             $view->with('newProducts', $newProducts);
+        });
+        View::composer('*', function ($view) {
+            $productList = Product::orderBy('name')->get();
+            $view->with('productList', $productList);
         });
 
     }
