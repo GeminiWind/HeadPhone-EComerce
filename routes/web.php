@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('products','ProductController', ['except' => ['show', 'create', 'edit']]);
     Route::resource('stock','StockController', ['except' =>['show','edit', 'create']]);
     Route::resource('events','EventController');
+    Route::resource('orders','OrderController', ['except' =>['edit','update','create', 'store','destroy']]);
     Route::post('/product/images/upload','ProductController@uploadImages');
 });
 

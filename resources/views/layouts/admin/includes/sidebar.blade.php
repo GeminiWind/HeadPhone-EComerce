@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('category.index') }}">
                     <i class="fa fa-tasks">
                     </i>
                     Category
@@ -60,14 +60,14 @@
                 </a>
             </li>
               <li>
-                <a href="#">
+                <a href="{{ route('stock.index') }}">
                     <i class="fa fa-database">
                     </i>
                     Stock
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('orders.index') }}">
                     <i class="fa fa-cart-arrow-down">
                     </i>
                     Order

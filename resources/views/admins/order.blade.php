@@ -23,7 +23,7 @@
                                         No
                                     </th>
                                     <th aria-controls="example1" aria-label="Browser: activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 170px;" tabindex="0">
-                                        Customer Name
+                                        Customer
                                     </th>
                                     <th aria-controls="example1" aria-label="Browser: activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 170px;" tabindex="0">
                                         Order ID
@@ -56,16 +56,10 @@
                                         {{ $order->total }}
                                     </td>
                                     <td>
-                                        <a class="btn btn-info pull-right" href="{{ route('admin.order.show', $order->id) }}" style="margin-right: 5px;">
+                                        <a class="btn btn-info pull-right" href="{{ route('orders.show', $order->id) }}" style="margin-right: 5px;">
                                             <i class="fa fa-info">
                                             </i>
                                         </a>
-                                        @if (!$order->is_sent )
-                                        <a class="btn btn-success pull-right" href="{{ route('admin.order.sent', $order->id) }}" style="margin-right: 5px;">
-                                            <i class="fa fa-check">
-                                            </i>
-                                        </a>
-                                        @endif
                                     </td>
                                     <td>
                                         {{$order->created_at->diffForHumans()}}

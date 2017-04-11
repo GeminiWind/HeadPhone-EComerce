@@ -1,7 +1,7 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
 @endpush
-@extends('layout.admins.master')
+@extends('layouts.admin.master')
 @section('content')
 
 
@@ -14,6 +14,7 @@
             <div class="box-header">
                <h3 class="box-title">
                   Deail for Order {{ $order->id}}
+                  <br>
                   Total: VND {{ $order->total }}
                   
                </h3>
@@ -52,7 +53,7 @@
                            {{$product->pivot->quantity}}
                         </td>
                         <td>
-                           VND {{$product->getCurrentPrice()}}
+                           VND {{$product->pivot->price}}
                         </td>
                      </tr>
                      @endforeach
