@@ -35,4 +35,11 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	config.filebrowserBrowseUrl = 'http://headphone.dev/plugins/ckfinder/ckfinder.html';
+	config.filebrowserImageBrowseUrl = 'http://headphone.dev/plugins/ckfinder/ckfinder.html?type=Images';
+	config.filebrowserFlashBrowseUrl = 'http://headphone.dev/plugins/ckfinder/ckfinder.html?type=Flash';
+	config.filebrowserUploadUrl = 'http://headphone.dev/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
+	config.filebrowserImageUploadUrl = 'http://headphone.dev/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
+	config.filebrowserFlashUploadUrl = 'http://headphone.dev/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
 };

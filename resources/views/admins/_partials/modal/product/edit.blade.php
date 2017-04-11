@@ -1,4 +1,7 @@
 <!-- Modal Update -->
+@push('js-head')
+    <script language="javascript" src="{{ asset('plugins/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+@endpush
                         <div aria-labelledby="myModalLabel" class="modal fade" id="editProductId{{ $product->id }}" role="dialog" tabindex="-1">
                            <div class="modal-dialog" role="document">
                               <div class="modal-content">
