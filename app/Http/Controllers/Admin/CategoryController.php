@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CateRequest;
 use App\Http\Requests\CateRequestUpdate;
 use App\Models\Category;
+use App\Logic\CategoryProductLogic;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -62,7 +63,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
-        return redirect()->route('category.index')->with(['flash_message' => 'Delete completed a category']);
+        $category = Category::find($id);
+        $logic = new CategoryProductLogic($category);
+        if ($logic->canDelete())
+        {
+            $category->delete();
+            return redirect()->route('category.index')->with(['flash_message' => 'Delete completed a category']);
+        }
+        return back()->with('status','error');
     }
 }
