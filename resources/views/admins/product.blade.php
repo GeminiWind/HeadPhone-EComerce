@@ -113,7 +113,7 @@
                            {{++$i}}
                         </td>
                         <td>
-                           <img src="{{ asset($product->url_image) }}" width="100px" height="100px">
+                           <img src="{{Config::get('headphone.products', '/images/products/')}}{{ $product->image['main']}}" width="100px" height="100px">
                         </td>
                         <td>
                            {{ $product->name }}

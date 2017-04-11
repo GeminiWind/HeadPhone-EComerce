@@ -34,7 +34,7 @@
                      Add new category
                   </button>
                   <!-- Modal New -->
-               @include('admins._partials.modal.product.create')
+               @include('admins._partials.modal.category.create')
                </h3>
             </div>
             
@@ -90,11 +90,11 @@
                         </td>
 
                         <!-- Modal Update -->
-                        @include('admins._partials.modal.product.edit', ['category' => $category])
+                        @include('admins._partials.modal.category.edit', ['category' => $category])
                         <!-- End Modal Update -->
 
                         <!-- Modal Delete -->
-                        @include('admins._partials.modal.product.destroy', ['category' => $category])
+                        @include('admins._partials.modal.category.destroy', ['category' => $category])
                         <!-- End Modal Delete -->
                         <td>
                            {{$category->created_at->diffForHumans()}}
@@ -139,6 +139,7 @@
 </script>
 <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}">
 </script>
+<script src="/js/admin/myscript.js"></script>
 @endpush
 @push('script')
 <script>

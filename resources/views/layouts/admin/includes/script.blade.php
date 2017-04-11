@@ -9,8 +9,7 @@
 <!-- AdminLTE App -->
 <script src="/js/admin/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="js/admin/demo.js"></script>
-<script src"{{ asset('js/admin/myscript.js') }}"></script>
+<script src="/js/admin/demo.js"></script>
 @if(session('status') === 'success')
 <script>
     swal({

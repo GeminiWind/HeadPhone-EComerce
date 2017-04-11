@@ -1,4 +1,7 @@
 <!-- Modal New -->
+@push('js-head')
+    <script language="javascript" src="{{ asset('plugins/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+@endpush
 <div aria-labelledby="myModalLabel" class="modal fade" id="addNewProduct" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -53,8 +56,13 @@
                             <label for="description">
                                 Description
                             </label>
-                            <textarea id="description" name="description" rows="8" class="form-control">
+                            <textarea id="description" name="" id="description" rows="8" class="form-control">
                             </textarea>
+                            @push('script')
+                             <script>
+                               CKEDITOR.replace( 'description' );
+                           </script>    
+                        @endpush
                         </div>
                         <div class="form-group">
                             <label for="price">

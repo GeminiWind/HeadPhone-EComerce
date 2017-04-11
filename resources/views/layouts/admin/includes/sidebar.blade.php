@@ -73,6 +73,13 @@
                     Order
                 </a>
             </li>
+             <li>
+                <a href=" {{ url('/admin/post') }}">
+                    <i class="fa fa-book">
+                    </i>
+                    Post
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
