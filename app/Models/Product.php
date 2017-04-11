@@ -107,7 +107,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class)->withPivot('quantity','price');;
+        return $this->belongsToMany(Order::class)->withPivot('quantity','price');
     }
 
     public function stock()

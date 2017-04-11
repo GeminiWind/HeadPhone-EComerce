@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Validator;
+use App\Logic\ProductOrderLogic;
 
 class ProductController extends Controller
 {
@@ -125,11 +126,17 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::find($id);
+        $product = Product::with('orders')->find($id);
         if ($product)
         {
-            $product->delete();
-            return redirect()->route('products.index')->with('status','success');
+            $logic = new ProductOrderLogic($product);
+            if ($logic->canDelete())
+            {
+                $product->delete();
+                return redirect()->route('products.index')->with('status','success');
+            }
+            return redirect()->route('products.index')->with('status','error');
+            
         }
         abort(404);
       
