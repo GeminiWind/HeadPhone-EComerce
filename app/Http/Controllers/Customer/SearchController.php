@@ -28,8 +28,7 @@ class SearchController extends Controller
     		$results = $results->merge($products);
     	}
     	$results = $results->unique();
-    	if($results->isNotEmpty())
-    	{
+    	
     		$results = new \Illuminate\Pagination\LengthAwarePaginator(
 		        $results->forPage(\Illuminate\Pagination\Paginator::resolveCurrentPage() ,9),
 		        $results->count(), 9,
@@ -37,7 +36,7 @@ class SearchController extends Controller
 		        ['path' => \Illuminate\Pagination\Paginator::resolveCurrentPath()]
 		    );
     		return view('customers.search_result', ['results' => $results]);
-    	}
-    	abort(404);
+    	
+   
     }
 }

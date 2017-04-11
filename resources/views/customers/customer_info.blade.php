@@ -114,10 +114,10 @@
                                                         {{ $product->pivot->quantity}}
                                                     </td>
                                                     <td>
-                                                        {{ $product->price }}
+                                                        {{ $product->pivot->price }}
                                                     </td>
                                                     <td>
-                                                        {{ $product->price*$product->pivot->quantity }}
+                                                        {{ $product->pivot->price*$product->pivot->quantity }}
                                                     </td>
                                                 </tr>
                                                 @endforeach

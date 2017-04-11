@@ -36,22 +36,7 @@
 						<div class="row">
 						@foreach($products as $product)
 							<div class="col-sm-4">
-								<div class="single-item">
-									<div class="single-item-header">
-										<a href="{{route('product.show',['slugCategory' => $product->category->slug, 'slugProduct' => $product->slug])}}"><img src="{{Config::get('headphone.products', '/images/products/')}}{{ $product->image['main']}}" alt="" height="250px"></a>
-									</div>
-									<div class="single-item-body">
-										<p class="single-item-title">{{$product->name}}</p>
-										<p class="single-item-price" style="font-size: 18px">
-										<span>{{number_format($product->price)}} đồng</span>
-										</p>
-									</div>
-									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="{{ route('cart.quick-add', $product->slug) }}"><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="{{ route('product.show', ['categorySlug' => $product->category->slug, 'productSlug' => $product->slug]) }}">Details <i class="fa fa-chevron-right"></i></a>
-										<div class="clearfix"></div>
-									</div>
-								</div>
+								@include('customers.components.product',['product' => $product ])
 							</div>
 						@endforeach
 						</div>

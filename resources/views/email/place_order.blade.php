@@ -12,7 +12,7 @@
 | Product      			  | Qty           | Price  					  |
 | ------------------------|:-------------:| -------------------------:|
 @foreach ($order->products as $product)
-| {{$product->name}}      |  {{$product->pivot->quantity}}      | {{$product->price}}     |
+| {{$product->name}}      |  {{$product->pivot->quantity}}      | {{$product->pivot->price}}     |
 @endforeach
 @endcomponent
 

@@ -49,24 +49,7 @@
                             <div class="row">
                             @foreach($newProducts as $new)
                                 <div class="col-sm-3">
-                                    <div class="single-item">
-s                                        <div class="single-item-header">
-                                            <a href="#"><img src="{{Config::get('headphone.products', '/images/products/')}}{{ $new->image['main']}}" alt="" height="250px"></a>
-                                        </div>
-                                        <div class="single-item-body">
-                                            <p class="single-item-title">{{$new->name}}</p>
-                                            <p class="single-item-price" style="font-size: 18px">
-                                        
-                                                <span class="flash-sale">{{number_format($new->price)}}
-                                            </p>
-                                        </div>
-                                        <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" href="#" data-product-slug="{{ $new->slug}}"><i class="fa fa-heart"></i></a>
-                                            <a class="add-to-cart pull-left" href="{{ route('cart.quick-add', $new->slug) }}"><i class="fa fa-shopping-cart"></i></a>
-                                            <a class="beta-btn primary" href="{{ route('product.show', ['categorySlug' => $new->category->slug, 'productSlug' => $new->slug]) }}">Chi tiết <i class="fa fa-chevron-right"></i></a>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
+                                    @include('customers.components.product',['product' => $new ])
                                 </div>
                             @endforeach
                             </div>
@@ -84,23 +67,7 @@ s                                        <div class="single-item-header">
                             <div class="row">
                             @foreach($hotProducts as $hot)
                                 <div class="col-sm-3">
-                                    <div class="single-item">
-s                                        <div class="single-item-header">
-                                            <a href="#"><img src="{{Config::get('headphone.products', '/images/products/')}}{{ $hot->image['main']}}" alt="" height="250px"></a>
-                                        </div>
-                                        <div class="single-item-body">
-                                            <p class="single-item-title">{{$hot->name}}</p>
-                                            <p class="single-item-price" style="font-size: 18px">
-                                        
-                                                <span class="flash-sale">{{number_format($hot->price)}}
-                                            </p>
-                                        </div>
-                                        <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" href="{{ route('cart.quick-add', $hot->slug) }}"><i class="fa fa-shopping-cart"></i></a>
-                                            <a class="beta-btn primary" href="{{ route('product.show', ['categorySlug' => $hot->category->slug, 'productSlug' => $hot->slug]) }}">Chi tiết <i class="fa fa-chevron-right"></i></a>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
+                                   @include('customers.components.product',['product' => $hot ])
                                 </div>
                             @endforeach
                             </div>

@@ -21,7 +21,7 @@ class CartController extends Controller
             Cart::add(array(
                 'id'      => $product->id,
                 'name'    => $product->name,
-                'price'   => $product->price,
+                'price'   => $product->current_price,
                 'qty'     => $qty,
                 'options' => [
                     'main_image' => $product->image['main'],
@@ -38,7 +38,7 @@ class CartController extends Controller
             Cart::add(array(
                 'id'      => $product->id,
                 'name'    => $product->name,
-                'price'   => $product->price,
+                'price'   => $product->current_price,
                 'qty'     => $request->qty,
                 'options' => [
                     'main_image' => $product->image['main'],
