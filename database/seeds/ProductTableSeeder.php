@@ -77,6 +77,185 @@ class ProductTableSeeder extends Seeder
                 'created_at'   => Carbon::now(),
                 'updated_at'   => Carbon::now(),
             ),
+            array('name'   => 'akg k450',
+                'slug'         => 'akg-k450',
+                'price'        => 2435000,
+                'description'  => 'AKG K450 Hàng chính hãng của AKG Việt Nam. Bảo hành 24 tháng tại nhà phân phối.
+
+                                    Mô tả:
+
+                                    Edgy, fashionable and sexy. Shimmy on over to the sassy style of these sleek CX 281 ear canal phones. You will enjoy clear and detailed sound, thanks to their high performance dynamic speaker systems. The wide array of ear adapters (S/M/L sizes) allows for a personalised fit as well as excellent passive attenuation of ambient noise. And like the MX 581, the CX 281 come with a share adaptor - allowing you to share your listening experience with a friend (who will need another pair of headphones).
+
+                                    Tính năng:
+                                    Ergonomic ear canal phones with high performance dynamic speaker systems for listeners with smaller ears
+                                    Silicon ear adaptors for a personalised comfort fit
+                                    Integrated volume control
+                                    Unique red and gold graphics on earphones - no two designs are the same!
+                                    Hassle-free cable slider
+                                    Symmetrical braided-design cable for a tangle-free listening experience
+                                    Share adaptor - Share your audio with a friend!
+                                    Storage pouch fits your earphones and iPod Nano (4th Gen) perfectly!
+                                    Optimised for MP3, iPod, iPhone (iPod and iPhone are trademarks of Apple Inc. registered in the U.S. and other countries) and portable media players
+                                    2 year warranty
+                                    Đóng gói:
+                                    CX 281 ear-canal phones
+                                    Ear adapter set (S/M/L)
+                                    Share adaptor
+                                    Storage pouch',
+                'image'        => '{"main":"On Ear/755_akg_k450_chinh_hang.gif"}',
+                'is_hot'       => 0,
+                'is_new'       => 1,
+                'is_available' => 1,
+                'guarantee_duration' => 12,
+                'category_id'  => 2,
+                'brand_id'     => 3,
+                'created_at'   => Carbon::now(),
+                'updated_at'   => Carbon::now(),
+            ),
+            array('name'   => 'soundmagic p11s',
+                'slug'         => 'soundmagic-p11s',
+                'price'        => 1435000,
+                'description'  => 'soundmagic p11s Hàng chính hãng của Soundmagic. Bảo hành 24 tháng tại nhà phân phối.
+
+                                    Mô tả:
+
+                                    Edgy, fashionable and sexy. Shimmy on over to the sassy style of these sleek CX 281 ear canal phones. You will enjoy clear and detailed sound, thanks to their high performance dynamic speaker systems. The wide array of ear adapters (S/M/L sizes) allows for a personalised fit as well as excellent passive attenuation of ambient noise. And like the MX 581, the CX 281 come with a share adaptor - allowing you to share your listening experience with a friend (who will need another pair of headphones).
+
+                                    Tính năng:
+                                    Ergonomic ear canal phones with high performance dynamic speaker systems for listeners with smaller ears
+                                    Silicon ear adaptors for a personalised comfort fit
+                                    Integrated volume control
+                                    Unique red and gold graphics on earphones - no two designs are the same!
+                                    Hassle-free cable slider
+                                    Symmetrical braided-design cable for a tangle-free listening experience
+                                    Share adaptor - Share your audio with a friend!
+                                    Storage pouch fits your earphones and iPod Nano (4th Gen) perfectly!
+                                    Optimised for MP3, iPod, iPhone (iPod and iPhone are trademarks of Apple Inc. registered in the U.S. and other countries) and portable media players
+                                    2 year warranty
+                                    Đóng gói:
+                                    CX 281 ear-canal phones
+                                    Ear adapter set (S/M/L)
+                                    Share adaptor
+                                    Storage pouch',
+                'image'        => '{"main":"On Ear/1151_soundmagic_p11s.gif"}',
+                'is_hot'       => 0,
+                'is_new'       => 1,
+                'is_available' => 1,
+                'guarantee_duration' => 12,
+                'category_id'  => 2,
+                'brand_id'     => 13,
+                'created_at'   => Carbon::now(),
+                'updated_at'   => Carbon::now(),
+                ),
+
+            array('name'   => 'audio technica ath 330com',
+                'slug'         => 'audio-technica-ath-330com',
+                'price'        => 890000,
+                'description'  => 'audio technica ath 330com Hàng chính hãng của audio technica. Bảo hành 24 tháng tại nhà phân phối.
+
+                                    Mô tả:
+
+                                    Edgy, fashionable and sexy. Shimmy on over to the sassy style of these sleek CX 281 ear canal phones. You will enjoy clear and detailed sound, thanks to their high performance dynamic speaker systems. The wide array of ear adapters (S/M/L sizes) allows for a personalised fit as well as excellent passive attenuation of ambient noise. And like the MX 581, the CX 281 come with a share adaptor - allowing you to share your listening experience with a friend (who will need another pair of headphones).
+
+                                    Tính năng:
+                                    Ergonomic ear canal phones with high performance dynamic speaker systems for listeners with smaller ears
+                                    Silicon ear adaptors for a personalised comfort fit
+                                    Integrated volume control
+                                    Unique red and gold graphics on earphones - no two designs are the same!
+                                    Hassle-free cable slider
+                                    Symmetrical braided-design cable for a tangle-free listening experience
+                                    Share adaptor - Share your audio with a friend!
+                                    Storage pouch fits your earphones and iPod Nano (4th Gen) perfectly!
+                                    Optimised for MP3, iPod, iPhone (iPod and iPhone are trademarks of Apple Inc. registered in the U.S. and other countries) and portable media players
+                                    2 year warranty
+                                    Đóng gói:
+                                    CX 281 ear-canal phones
+                                    Ear adapter set (S/M/L)
+                                    Share adaptor
+                                    Storage pouch',
+                'image'        => '{"main":"Gaming/1156_audio_technica_ath_330com_chinh_hang.gif"}',
+                'is_hot'       => 1,
+                'is_new'       => 1,
+                'is_available' => 1,
+                'guarantee_duration' => 12,
+                'category_id'  => 5,
+                'brand_id'     => 4,
+                'created_at'   => Carbon::now(),
+                'updated_at'   => Carbon::now(),
+                ),
+
+            array('name'   => 'sennheiser pmx90',
+                'slug'         => 'sennheiser-pmx90',
+                'price'        => 943000,
+                'description'  => 'audio technica ath 330com Hàng chính hãng của audio technica. Bảo hành 24 tháng tại nhà phân phối.
+
+                                    Mô tả:
+
+                                    Edgy, fashionable and sexy. Shimmy on over to the sassy style of these sleek CX 281 ear canal phones. You will enjoy clear and detailed sound, thanks to their high performance dynamic speaker systems. The wide array of ear adapters (S/M/L sizes) allows for a personalised fit as well as excellent passive attenuation of ambient noise. And like the MX 581, the CX 281 come with a share adaptor - allowing you to share your listening experience with a friend (who will need another pair of headphones).
+
+                                    Tính năng:
+                                    Ergonomic ear canal phones with high performance dynamic speaker systems for listeners with smaller ears
+                                    Silicon ear adaptors for a personalised comfort fit
+                                    Integrated volume control
+                                    Unique red and gold graphics on earphones - no two designs are the same!
+                                    Hassle-free cable slider
+                                    Symmetrical braided-design cable for a tangle-free listening experience
+                                    Share adaptor - Share your audio with a friend!
+                                    Storage pouch fits your earphones and iPod Nano (4th Gen) perfectly!
+                                    Optimised for MP3, iPod, iPhone (iPod and iPhone are trademarks of Apple Inc. registered in the U.S. and other countries) and portable media players
+                                    2 year warranty
+                                    Đóng gói:
+                                    CX 281 ear-canal phones
+                                    Ear adapter set (S/M/L)
+                                    Share adaptor
+                                    Storage pouch',
+                'image'        => '{"main":"Clip On/215_sennheiser_pmx90_xuanvu1.jpg"}',
+                'is_hot'       => 1,
+                'is_new'       => 1,
+                'is_available' => 1,
+                'guarantee_duration' => 12,
+                'category_id'  => 3,
+                'brand_id'     => 4,
+                'created_at'   => Carbon::now(),
+                'updated_at'   => Carbon::now(),
+                ),
+
+            array('name'   => 'sennheiser mx475',
+                'slug'         => 'sennheiser-mx475',
+                'price'        => 880000,
+                'description'  => 'sennheiser_mx475 Hàng chính hãng của sennheiser. Bảo hành 24 tháng tại nhà phân phối.
+
+                                    Mô tả:
+
+                                    Edgy, fashionable and sexy. Shimmy on over to the sassy style of these sleek CX 281 ear canal phones. You will enjoy clear and detailed sound, thanks to their high performance dynamic speaker systems. The wide array of ear adapters (S/M/L sizes) allows for a personalised fit as well as excellent passive attenuation of ambient noise. And like the MX 581, the CX 281 come with a share adaptor - allowing you to share your listening experience with a friend (who will need another pair of headphones).
+
+                                    Tính năng:
+                                    Ergonomic ear canal phones with high performance dynamic speaker systems for listeners with smaller ears
+                                    Silicon ear adaptors for a personalised comfort fit
+                                    Integrated volume control
+                                    Unique red and gold graphics on earphones - no two designs are the same!
+                                    Hassle-free cable slider
+                                    Symmetrical braided-design cable for a tangle-free listening experience
+                                    Share adaptor - Share your audio with a friend!
+                                    Storage pouch fits your earphones and iPod Nano (4th Gen) perfectly!
+                                    Optimised for MP3, iPod, iPhone (iPod and iPhone are trademarks of Apple Inc. registered in the U.S. and other countries) and portable media players
+                                    2 year warranty
+                                    Đóng gói:
+                                    CX 281 ear-canal phones
+                                    Ear adapter set (S/M/L)
+                                    Share adaptor
+                                    Storage pouch',
+                'image'        => '{"main":"Ear Bud/684_sennheiser_mx475.gif"}',
+                'is_hot'       => 0,
+                'is_new'       => 1,
+                'is_available' => 1,
+                'guarantee_duration' => 12,
+                'category_id'  => 6,
+                'brand_id'     => 11,
+                'created_at'   => Carbon::now(),
+                'updated_at'   => Carbon::now(),
+                ),
+
         ]);
     }
 }
