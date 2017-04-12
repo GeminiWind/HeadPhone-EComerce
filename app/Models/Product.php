@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Model;
 use App\Scopes\AvailableScope;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
@@ -17,8 +17,6 @@ class Product extends Model
         'is_available' => 'boolean',
         'image'        => 'array',
     ];
-    protected $attributes = ['current_price'];
-    protected $appends    = ['current_price'];
 
     use Sluggable;
 
@@ -53,9 +51,8 @@ class Product extends Model
         return $query->where('is_new', 1);
     }
 
-  
-
-    public function isSale(){
+    public function isSale()
+    {
         $current_time = Carbon::now()->toDateString();
         foreach ($this->events()->get() as $sale) {
             if ($sale->began_at < $current_time &&
@@ -67,17 +64,21 @@ class Product extends Model
         return null;
     }
 
-    public function getCurrentPriceAttribute()
+    public function getCurrentPriceAttribute($value)
     {
         $sale = $this->isSale();
-        if ($sale != null)
-        {
-            $temp = ($this->price / 100) * $sale->rate;
+        if ($sale != null) {
+            $temp         = ($this->price / 100) * $sale->rate;
             $currentPrice = $this->price - $temp;
-            return $this->attributes['current_price'] = $currentPrice;
+            return $currentPrice;
         }
-        return $this->attributes['current_price'] = $this->price;
-        
+        return $this->price;
+
+    }
+
+    public function setImageAttribute($value)
+    {
+        $this->attributes['image'] = json_encode($value);
     }
 
     public function events()
@@ -107,7 +108,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Order::class)->withPivot('quantity','price');
+        return $this->belongsToMany(Order::class)->withPivot('quantity', 'price');
     }
 
     public function stock()

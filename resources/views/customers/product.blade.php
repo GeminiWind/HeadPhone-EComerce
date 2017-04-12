@@ -68,21 +68,11 @@
                                 <option>
                                     Số lượng
                                 </option>
-                                <option value="1">
-                                    1
+                              @for($i=1;$i<= $product->stock->quantity; $i++)
+                               <option value="{{$i}}">
+                                    {{$i}}
                                 </option>
-                                <option value="2">
-                                    2
-                                </option>
-                                <option value="3">
-                                    3
-                                </option>
-                                <option value="4">
-                                    4
-                                </option>
-                                <option value="5">
-                                    5
-                                </option>
+                              @endfor
                             </select>
                             <button type="submit">
                             <a class="add-to-cart">

@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('is_available')->default(1);
             $table->tinyInteger('guarantee_duration');
             $table->integer('count')->default(0);
+            $table->integer('current_price')->default(0);
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->integer('brand_id')->unsigned();

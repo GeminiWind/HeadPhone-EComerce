@@ -117,10 +117,13 @@
                 </div>
               
                
-                                    <div class="form-group">
-                                       <label for="image">Image</label>
-                                       <input type="file" class="form-control" id="image" name="image">
-                                    </div>
+                                     <div class="form-group">
+                            <label for="image">
+                                Image
+                            </label>
+                            <input class="form-control" id="image" name="file" type="file">
+                            </input>
+                        </div>
                                     <div class="box-footer">
                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
