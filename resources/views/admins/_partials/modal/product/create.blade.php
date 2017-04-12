@@ -56,7 +56,7 @@
                             <label for="description">
                                 Description
                             </label>
-                            <textarea id="description" name="" id="description" rows="8" class="form-control">
+                            <textarea id="description" name="description" id="description" rows="8" class="form-control">
                             </textarea>
                             @push('script')
                              <script>
@@ -131,7 +131,13 @@
                             </div>
                         </div>
                         </div>
-                     
+                          <div class="form-group">
+                            <label for="image">
+                                Image
+                            </label>
+                            <input class="form-control" id="image" name="file" type="file">
+                            </input>
+                        </div>
                         <div class="box-footer">
                             <button class="btn btn-primary" type="submit">
                                 Submit
@@ -146,20 +152,5 @@
                 </button>
             </div>
         </div>
-        <form action="/admin/product/images/upload" class="dropzone" id="product-images" enctype="multipart/form-data">
-        {!! csrf_field() !!}
-                          <div>
-                <h3>Upload Product Image For Products. </h3>
-                <small>The first will be used as main image</small>
-            </div>
-        </form>
-        @push('script')
-            <script type="text/javascript">
-                    Dropzone.options.productImages = {
-                        maxFilesize         :       2,
-                        acceptedFiles: ".jpeg,.jpg,.png,.gif"
-                    };
-            </script>
-        @endpush
     </div>
 </div>
