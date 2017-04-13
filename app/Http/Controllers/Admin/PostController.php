@@ -61,7 +61,7 @@ class PostController extends Controller
             $admin          = Auth::guard('admin')->user();
             $post->admin_id = $admin->id;
             $post->save();
-            return redirect()->route('post.index')->with('status', 'success');
+            return redirect('admin/post')->with('status', 'success');
         } else {
             return redirect()->back()
                 ->withErrors($validator)
@@ -117,7 +117,7 @@ class PostController extends Controller
             $data = $request->only(['title', 'content']);
             $post->update($data);
             $post->save();
-            return redirect()->route('post.index')->with('status', 'success');
+            return redirect('/admin/post')->with('status', 'success');
         } else {
             return redirect()->back()
                 ->withErrors($validator)

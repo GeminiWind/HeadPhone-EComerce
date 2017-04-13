@@ -14,15 +14,15 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $results        = new Collection();
-        $key            = $request->get('key');
-        $resultProducts = Product::where('name', 'LIKE', '%' . $key . '%')->orderBy('name')->get();
+        $key            = str_slug($request->get('key'), $separator = "-");
+        $resultProducts = Product::where('slug', 'LIKE', '%' . $key . '%')->orderBy('name')->get();
         $results->merge($resultProducts);
-        $resultCategories = Category::where('name', 'LIKE', '%' . $key . '%')->orderBy('name')->get();
+        $resultCategories = Category::where('slug', 'LIKE', '%' . $key . '%')->orderBy('name')->get();
         foreach ($resultCategories as $resultCategory) {
             $products = $resultCategory->products()->get();
             $results  = $results->merge($products);
         }
-        $resultBrands = Brand::where('name', 'LIKE', '%' . $key . '%')->orderBy('name')->get();
+        $resultBrands = Brand::where('slug', 'LIKE', '%' . $key . '%')->orderBy('name')->get();
         foreach ($resultBrands as $resultBrand) {
             $products = $resultBrand->products()->get();
             $results  = $results->merge($products);
