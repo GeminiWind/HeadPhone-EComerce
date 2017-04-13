@@ -107,7 +107,7 @@ class ProductController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if (!$validator->fails()) {
-            $product = Product::whereSlug($slug)->first();
+            $product = Product::withoutGlobalScope(AvailableScope::class)->where('slug',$slug)->first();
             if ($product) {
                 if ($request->hasFile('file')) {
                     $image       = $request->file('file');
@@ -140,10 +140,11 @@ class ProductController extends Controller
                 $product->update($inputs);
                 $product->category_id = $request->category_id;
                 $product->brand_id    = $request->brand_id;
+                $product->save();
+                return redirect()->route('products.index')->with('status', 'success');
             }
-            $product->save();
-            return redirect()->route('products.index')->with('status', 'success');
-        } else {
+        } 
+        else {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput()->with('status', 'error');
@@ -152,7 +153,7 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::with('orders')->find($id);
+        $product = Product::withoutGlobalScope(AvailableScope::class)->with('orders')->where('id',$id)->first();
         if ($product) {
             $logic = new ProductOrderLogic($product);
             if ($logic->canDelete()) {
