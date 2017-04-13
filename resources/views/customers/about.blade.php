@@ -1,4 +1,5 @@
 @extends('layouts/customer/master')
+@section('title', 'About Headphone.Dev')
 @section('content')
 <div class="inner-header">
         <div class="container">

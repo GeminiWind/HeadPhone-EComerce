@@ -80,17 +80,14 @@
                            Price
                         </th>
                         <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
-                           Unit
-                        </th>
-                        <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
                            Hot
                         </th>
                         <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
                            New
                         </th>
-                       {{--  <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
+                       <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
                            Sale
-                        </th> --}}
+                        </th>
                         <th aria-controls="example1" aria-label="Task : activate to sort column ascending" class="sorting" colspan="1" rowspan="1" style="width: 148px;" tabindex="0">
                            Description
                         </th>
@@ -126,14 +123,12 @@
                            {{ $product->price }}
                         </td>
                          <td>
-                           {{ $product->unit }}
-                        </td>
-                         <td>
                            {{ ($product->is_hot) ? 'Hot' : 'No' }}
                         </td>
                          <td>
                            {{ ($product->is_new) ? 'New' : 'No' }}
                         </td>
+                          <td>{{ ($product->isSale()) ? 'Yes' : 'No'}}</td>
                          <td>
                            {{ str_limit($product->description, $limit = 100, $end = "...") }}
                         </td>
@@ -153,12 +148,6 @@
                            @include('admins._partials.modal.product.edit', ['product' => $product ])
                         </td>
                         <td>
-                           {{ str_limit($product->created_at, $limit = 100, $end = "...") }}
-                        </td>
-                         <td>
-                           {{ str_limit($product->updated_at, $limit = 100, $end = "...") }}
-                        </td>
-                        <td>
                            {{$product->created_at->diffForHumans()}}
                         </td>
                         <td>
@@ -173,6 +162,27 @@
                         </th>
                         <th colspan="1" rowspan="1">
                            Name
+                        </th>
+                          <th colspan="1" rowspan="1">
+                           Img
+                        </th>
+                         <th colspan="1" rowspan="1">
+                           Category
+                        </th>
+                         <th colspan="1" rowspan="1">
+                           Prcie
+                        </th>
+                         <th colspan="1" rowspan="1">
+                           Hot
+                        </th>
+                         <th colspan="1" rowspan="1">
+                           New
+                        </th>
+                         <th colspan="1" rowspan="1">
+                           Sale
+                        </th>
+                         <th colspan="1" rowspan="1">
+                           Description
                         </th>
                         <th colspan="1" rowspan="1">
                            Tool

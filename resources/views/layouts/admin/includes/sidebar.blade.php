@@ -60,10 +60,17 @@
                 </a>
             </li>
               <li>
-                <a href="{{ route('stock.index') }}">
-                    <i class="fa fa-database">
+                <a href=" {{ url('/admin/post') }}">
+                    <i class="fa fa-book">
                     </i>
-                    Stock
+                    Post
+                </a>
+            </li>
+              <li>
+                <a href="{{ route('events.index') }}">
+                    <i class="fa fa-gift">
+                    </i>
+                    Events
                 </a>
             </li>
             <li>
