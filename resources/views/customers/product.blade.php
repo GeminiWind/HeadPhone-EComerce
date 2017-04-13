@@ -1,4 +1,5 @@
 @extends('layouts.customer.master')
+@section('title', "Headphone.Dev-Product")
 @section('content')
 <div class="inner-header">
     <div class="container">
@@ -53,7 +54,10 @@
                         </div>
                         <div class="single-item-desc">
                             <p>
-                                  {!! $product->description !!}
+                                  Thương hiệu : {{ $product->brand->name}}
+                            </p>
+                            <p>
+                                Bảo hành : {{ $product->guarantee_duration }} tháng
                             </p>
                         </div>
                         <div class="space20">
@@ -65,9 +69,6 @@
                             {!! csrf_field() !!}
                             <div class="single-item-options">
                             <select class="wc-select" name="qty">
-                                <option>
-                                    Số lượng
-                                </option>
                               @for($i=1;$i<= $product->stock->quantity; $i++)
                                <option value="{{$i}}">
                                     {{$i}}

@@ -18,5 +18,8 @@ class AvailableScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         $builder->where('is_available', 1);
+        $builder->whereHas('stock', function($q) {
+            $q->where('quantity', '>', 0);
+        });
     }
 }

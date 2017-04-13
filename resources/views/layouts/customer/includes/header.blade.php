@@ -52,7 +52,8 @@
                                     <div class="media">
                                         <a class="pull-left" href="#"><img src="{{ Config::get('headphone.products', '/images/products/')}}{{ $item->options->main_image}}" alt=""></a>
                                         <div class="media-body">
-                                            <span class="cart-item-title">{{ $item->name }}</span>
+                                            <span class="cart-item-title">{{ $item->name }}:</span>
+                                            <span class="cart-item-amount">Qty: {{ $item->qty }}. Price: {{$item->price }}</span></span>
                                             <span class="cart-item-amount">{{ number_format($item->price*$item->qty,0,".",",") }}</span></span>
                                         </div>
                                     </div>

@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Logic\ProductOrderLogic;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use Validator;
+use App\Scopes\AvailableScope;
 
 class ProductController extends Controller
 {
@@ -19,7 +21,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::all();
+        $products = Product::withoutGlobalScope(AvailableScope::class)->orderBy('name')->get();
         return view('admins.product', compact('products'));
     }
 
@@ -40,6 +42,8 @@ class ProductController extends Controller
             'is_available'       => 'required',
             'file'               => 'required|image',
             'guarantee_duration' => 'required',
+            'import_price'       => 'required|min:0',
+            'quantity'           => 'required',
             'category_id'        => 'required|exists:categories,id',
             'brand_id'           => 'required|exists:brands,id',
         ];
@@ -75,6 +79,7 @@ class ProductController extends Controller
             $product->category_id = $request->category_id;
             $product->brand_id    = $request->brand_id;
             $product->save();
+            $product->stock()->save(new Stock(['import_price' => $request->import_price, 'quantity' => $request->quantity]));
             return redirect()->route('products.index')->with('status', 'success');
         } else {
             return redirect()->back()

@@ -1,4 +1,5 @@
 @extends('layouts/customer/master')
+@section('title', "Headphone.Dev-Website bán tai nghe uy tín")
 @section('content')
 <div class="fullwidthbanner-container">
     <div class="fullwidthbanner">

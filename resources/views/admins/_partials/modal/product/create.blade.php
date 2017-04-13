@@ -72,6 +72,20 @@
                             </input>
                         </div>
                         <div class="form-group">
+                            <label for="import_price">
+                                Import Price
+                            </label>
+                            <input class="form-control" id="" name="import_price"  type="number" value="{{ old('import_price' )}}">
+                            </input>
+                        </div>
+                           <div class="form-group">
+                            <label for="quantity">
+                                Quantity
+                            </label>
+                            <input class="form-control" id="" name="quantity"  type="number" value="{{ old('quantity' )}}">
+                            </input>
+                        </div>
+                        <div class="form-group">
                             <label for="guarantee_duration">
                                 Guaranee Duration
                             </label>
